@@ -1,0 +1,50 @@
+{
+  "name": "toast-default-starter",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "author": "christopherbiscardi <chris@christopherbiscardi.com> (@chrisbiscardi)",
+  "license": "MIT",
+  "scripts": {
+    "serve": "serve public",
+    "postinstall": "breadbox --dest public/web_modules",
+    "minify:js": "node scripts/minify-js.js",
+    "build": "npm run build:css && npm run build:site",
+    "build:css": "postcss --config legacy-commonjs index.css -o public/styles.css",
+    "build:site": "toast incremental .",
+    "postbuild": "npm run minify:js"
+  },
+  "dependencies": {
+    "@sector/breadbox": "^0.0.4",
+    "@toastdotdev/mdx": "^0.1.3",
+    "toast": "^0.3.30"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.4",
+    "esbuild": "^0.8.43",
+    "nodemon": "^2.0.7",
+    "postcss-cli": "^8.2.0",
+    "postcss": "^8.1.6",
+    "serve": "^11.3.2"
+  },
+  "snowpack": {
+    "exclude": [
+      "public/**/*",
+      "scripts/**",
+      "toast.js"
+    ],
+    "installOptions": {
+      "alias": {
+        "react": "preact/compat"
+      }
+    },
+    "knownEntrypoints": [
+      "preact/hooks",
+      "preact"
+    ]
+  },
+  "volta": {
+    "node": "14.15.4",
+    "npm": "7.5.2"
+  }
+}

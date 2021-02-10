@@ -1,0 +1,180 @@
+export const meta = {
+  title: "Intro to Toast",
+  slug: "/intro-to-toast",
+  description: "Getting started with toast"
+};
+
+## What is toast?
+
+## Getting started
+
+Run `npx create-toast minimal` to create a barebones toast site. 
+
+There are other starters available in [the official starters repo](https://github.com/toastdotdev/starters).
+
+### Adding a static page
+
+By default toast will check the `/src/pages/` directory, turning each `.js` file into an html page at build time.
+
+The minimal starter gives you a `/src/pages/index.js` file, which builds to `/public/index.html`.
+
+### Providing data to pages
+
+The `/src/pages/` directory is great for static pages. What about adding external data to your pages? 
+
+You can use a `toast.js` file in the root of your project to hook into Toast's page creation process. 
+
+A minimal `toast.js` file can look like this:
+
+```js
+export const sourceData = async ({ setDataForSlug }) => {
+  const componentSrc = `
+import { h } from "preact";
+export default props => <div>
+  <h1>Hello, world</h1>
+</div>
+`;
+
+  const pageArgs = {
+    component: {
+      mode: "source",
+      value: componentSrc,
+    },
+  }
+
+  await setDataForSlug("/my-page", pageArgs);
+
+  return;
+};
+```
+
+The key parts here are:
+
+- exporting a `sourceData` function
+- calling the `setDataForSlug` function
+
+When Toast builds your site, it checks to see if your `toast.js` file exports a `sourceData` function. If yes, Toast will run your `sourceData` function, passing in Toast's `setDataForSlug` function. [You can check the Toast source to see how this is done](https://github.com/toastdotdev/toast/blob/5ba6eb1bc0b3e8ea4e84394eca407b71fd13a6c2/toast-node-wrapper/toast-source-data.mjs#L9-L12).
+
+You're free to source your data however you like. When your data is ready, use `setDataForSlug` to provide the data for each page (or `slug`).
+
+#### setDataForSlug
+
+`setDataForSlug` is used to create pages and provide them with data.
+
+`setDataForSlug` requires `slug` and `pageArgs` parameters. `slug` sets the url path for your created page. `pageArgs` defines how to render the page. 
+
+`pageArgs` is an object with two top level keys:
+
+```js
+{
+  component: {},
+  data: {}
+}
+```
+
+- `component` describes the component tha will be used to render the page
+- `data` provides and data that's needed to render the page
+
+> Note: pageArgs can have other keys, you can [read more about the design of this API on GitHub](https://github.com/toastdotdev/toast/issues/29).
+
+Calling `setDataForSlug` multiple times for the same `slug` will cause Toast to merge the `pageArgs` from every call. 
+
+`setDataForSlug` is used by Toast when creating pages from files in your `/src/pages/` directory. 
+
+The above two points mean that you can push data into your filesystem components. For example:
+
+```js
+// /src/pages/index.js
+import { h } from "preact";
+
+export default (props) => {
+  return <div>
+    <h1>The Smallest Toast Example</h1>
+    <p>This page built at {props.buildTime}</p>
+  </div>
+};
+```
+
+```js
+// toast.js
+export const sourceData = async ({ setDataForSlug }) => {
+  await setDataForSlug("/", {
+    data: {
+      buildTime: new Date(),
+    },
+  });
+};
+```
+
+
+
+
+
+
+This will create a page at `/my-page`, that looks like: 
+
+[A browser shows a webpage with the text 'Hello, world'](./hello-world.png)
+
+
+
+
+
+Here's an example pushing some data into your component:
+
+```js
+export const sourceData = async ({ setDataForSlug }) => {
+  const componentSrc = `
+import { h } from "preact";
+export default props => <div>
+  <h1>Hello, world. {props.builtAt}</h1>
+</div>
+`;
+
+  const pageArgs = {
+    component: {
+      mode: "source",
+      value: componentSrc,
+    },
+    data: {
+      builtAt: new Date()
+    }
+  }
+
+  await setDataForSlug("/my-page", pageArgs);
+
+  return;
+};
+```
+
+
+
+Configuration consists of a function export called `sourceData`. `sourceData` is passed an object 
+
+sourceData
+sourceMdx
+
+
+#### `setDataForSlug`
+
+
+### MDX
+
+###
+
+```
+import { sourceMdx } from "@toastdotdev/mdx";
+
+export const sourceData = async ({ setDataForSlug }) => {
+
+
+}
+```
+
+
+Example sites
+
+jason.af
+jacobbolda
+blannon
+toast.dev
+christopherbiscardi
