@@ -15,36 +15,44 @@ async function* getFiles(path = `./`) {
     if (file.isDirectory()) {
       yield* getFiles(`${path}${file.name}/`);
     } else {
-      yield { ...file, path: path + file.name };
+      yield path + file.name;
     }
   }
+}
+
+const minifyOptions = {
+  format: "esm",
+  minify: true,
+  target: "es2020",
+};
+
+async function minifyFile(filePath, minifier) {
+  const fileContents = await fs.readFile(filePath, "utf-8");
+  const transformed = await minifier.transform(fileContents, minifyOptions);
+  return await fs.writeFile(filePath, transformed.code);
 }
 
 // TODO: output total file size reduction?
 async function main(dir) {
   performance.mark("start");
-  let service = await esbuild.startService();
-  let fileCount = 0;
+  let minifier = await esbuild.startService();
+  let promises = [];
 
   try {
-    for await (const file of getFiles(dir)) {
-      const filePath = file.path;
+    for await (const filePath of getFiles(dir)) {
       if (filePath.endsWith(".js")) {
-        fileCount += 1;
-        const options = {
-          format: "esm",
-          minify: true,
-          target: "es2020",
-        };
-        const fileContents = await fs.readFile(filePath, "utf-8");
-        const transformed = await service.transform(fileContents, options);
-        await fs.writeFile(filePath, transformed.code);
+        promises.push(minifyFile(filePath, minifier));
       }
     }
+    await Promise.all(promises);
   } finally {
-    service.stop();
+    minifier.stop();
     performance.mark("finish");
-    performance.measure(`Minified ${fileCount} JS files`, "start", "finish");
+    performance.measure(
+      `Minified ${promises.length} JS files`,
+      "start",
+      "finish"
+    );
   }
 }
 
