@@ -1,11 +1,11 @@
 import { h } from "preact";
 
-export default ({ posts }) => (
+const IndexPage = ({ posts }) => (
   <div>
     <h1>Notes</h1>
     <ul>
       {posts &&
-        posts.map((post, index) => (
+        posts.map((post) => (
           <li key={post.slug}>
             <a
               style={{ padding: "2rem", display: "block" }}
@@ -18,3 +18,5 @@ export default ({ posts }) => (
     </ul>
   </div>
 );
+
+export default IndexPage;

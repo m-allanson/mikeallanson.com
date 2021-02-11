@@ -56,4 +56,4 @@ async function main(dir) {
   }
 }
 
-await main("public/");
+main("public/");

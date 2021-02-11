@@ -2,13 +2,13 @@ import { h } from "preact";
 import { Helmet } from "react-helmet";
 import { MDXProvider } from "@mdx-js/preact";
 
+const CodeBlock = (props) => (
+  // eslint-disable-next-line react/no-danger
+  <div dangerouslySetInnerHTML={{ __html: props.children }} />
+);
+
 const components = {
-  codeblock: (props) => (
-    <div
-      class="bg-gray-900"
-      dangerouslySetInnerHTML={{ __html: props.children }}
-    />
-  ),
+  codeblock: CodeBlock,
 };
 
 export default function PageWrapper(props) {
@@ -20,7 +20,7 @@ export default function PageWrapper(props) {
         <link
           rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪲</text></svg>"
-        ></link>
+        />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
