@@ -303,10 +303,6 @@ summary {
   cursor: pointer;
 
   &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
     background-color: hsl(var(--focus));
     outline: none;
   }
@@ -314,7 +310,7 @@ summary {
 
 a,
 summary {
-  &:focus-visible {
+  &:focus {
     box-shadow: 0px 0px 0px 4px hsl(var(--focus));
     color: hsl(var(--on-focus));
   }
@@ -331,7 +327,7 @@ a {
     color: hsl(var(--visited));
     text-decoration-line: dashed;
 
-    &:focus-visible {
+    &:focus {
       color: hsl(var(--focus-visited));
     }
   }
@@ -343,7 +339,7 @@ a {
   &:active {
     color: hsl(var(--active));
 
-    &:focus-visible {
+    &:focus {
       color: hsl(var(--active));
     }
   }
@@ -387,7 +383,7 @@ header[role="banner"] {
       text-underline-offset: -6px;
     }
 
-    &:focus-visible {
+    &:focus {
       background-color: hsl(var(--focus));
       box-shadow: none;
     }
