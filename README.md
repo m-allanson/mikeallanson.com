@@ -1,3 +1,22 @@
+## TODO
+
+- ~sort by date~
+- ~tidy CSS~
+- custom prism styles?
+- readme
+- a11y double check (stylelint-a11y?)
+- dark mode toggle
+- dark mode styles :D
+- how to insert title into post from post metadata. instead of copy + pasting into post body
+- responsivitivity
+- shrink / remove font files
+- markers on the big links? arrows?
+- heading link icons / text?
+- figure out how to hook to an Obsidian vault for writing. Check this out https://dev.to/bathrobe/creating-a-diy-digital-garden-with-obsidian-and-gatsby-378e
+- font size balancing? See: https://fontdrop.info/ and https://codepen.io/simonjhearne/pen/rNMGJyr
+- background/header image on posts? hash post content and use hash as a seed for something generative? e.g. https://coolbackgrounds.io/ (triangilify) or https://jasonwebb.github.io/2d-differential-growth-experiments/experiments/07%20-%20bounds/
+- give this a proper home. I guess replace https://github.com/m-allanson/portfolio
+
 # Welcome to your new Toast site!
 
 ## scripts
