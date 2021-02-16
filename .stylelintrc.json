@@ -71,7 +71,8 @@
     "media-feature-name-allowed-list": [
       "min-height",
       "min-width",
-      "prefers-reduced-motion"
+      "prefers-reduced-motion",
+      "prefers-color-scheme"
     ],
     "media-feature-name-no-vendor-prefix": true,
     "no-descending-specificity": null,
@@ -112,7 +113,6 @@
         "units": ["px"]
       }
     ],
-    "scales/font-families": [["Sofia Pro", "sans-serif"]],
     "scales/font-sizes": [
       {
         "scale": [
