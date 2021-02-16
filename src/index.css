@@ -301,7 +301,6 @@ a,
 button,
 summary {
   cursor: pointer;
-  user-select: none;
 
   &:focus {
     outline: none;
@@ -322,6 +321,8 @@ summary {
 }
 
 a {
+  color: hsl(var(--text));
+
   &:focus {
     color: hsl(var(--focus-link));
   }
@@ -376,15 +377,14 @@ header[role="banner"] {
     font-weight: 700;
     letter-spacing: 0.1rem;
     padding: 1rem;
-    text-decoration: transparent underline wavy 4px;
-    text-decoration-skip-ink: none;
+    text-decoration: none;
     text-transform: uppercase;
-    text-underline-offset: -6px;
 
     &:hover {
       color: hsl(var(--banner-highlight));
-      text-decoration-color: hsl(var(--banner-underline));
-      /* transition: text-decoration-color 0.3s ease; */
+      text-decoration: hsl(var(--banner-underline)) underline wavy 4px;
+      text-decoration-skip-ink: none;
+      text-underline-offset: -6px;
     }
 
     &:focus-visible {

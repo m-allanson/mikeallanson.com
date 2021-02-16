@@ -2,6 +2,7 @@
 
 - ~sort by date~
 - ~tidy CSS~
+- focus reset should use @supports focus-visible for safari
 - custom prism styles?
 - readme
 - a11y double check (stylelint-a11y?)
@@ -12,6 +13,7 @@
 - shrink / remove font files
 - markers on the big links? arrows?
 - heading link icons / text?
+- meta tags
 - figure out how to hook to an Obsidian vault for writing. Check this out https://dev.to/bathrobe/creating-a-diy-digital-garden-with-obsidian-and-gatsby-378e
 - font size balancing? See: https://fontdrop.info/ and https://codepen.io/simonjhearne/pen/rNMGJyr
 - background/header image on posts? hash post content and use hash as a seed for something generative? e.g. https://coolbackgrounds.io/ (triangilify) or https://jasonwebb.github.io/2d-differential-growth-experiments/experiments/07%20-%20bounds/
