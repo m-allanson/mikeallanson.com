@@ -16,35 +16,13 @@ export default function PageWrapper(props) {
     <MDXProvider components={components}>
       <Helmet>
         <html lang="en" />
-        {/* <link
+        <link
           type="font/woff2"
-          href="fonts/IBMPlexSerif-Regular.woff2"
+          href="fonts/ibm-plex-serif-v9-latin-700.woff2"
           rel="preload"
           as="font"
           crossorigin="anonymous"
         />
-        <link
-          type="font/woff2"
-          href="fonts/IBMPlexSerif-Italic.woff2"
-          rel="preload"
-          as="font"
-          crossorigin="anonymous"
-        /> */}
-        <link
-          type="font/woff2"
-          href="fonts/IBMPlexSerif-Bold.woff2"
-          rel="preload"
-          as="font"
-          crossorigin="anonymous"
-        />
-        {/* <link
-          type="font/woff2"
-          href="fonts/IBMPlexSerif-BoldItalic.woff2"
-          rel="preload"
-          as="font"
-          crossorigin="anonymous"
-        /> */}
-
         <link rel="stylesheet" href="/styles.css" />
         <link
           rel="icon"
