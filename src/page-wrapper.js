@@ -4,7 +4,7 @@ import { MDXProvider } from "@mdx-js/preact";
 
 const CodeBlock = (props) => (
   // eslint-disable-next-line react/no-danger
-  <div dangerouslySetInnerHTML={{ __html: props.children }} />
+  <div is="code" dangerouslySetInnerHTML={{ __html: props.children }} />
 );
 
 const components = {
