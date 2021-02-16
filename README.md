@@ -10,6 +10,7 @@
 - dark mode styles :D
 - how to insert title into post from post metadata. instead of copy + pasting into post body
 - responsivitivity
+- "🪲🪲🪲" is not a very helpful page title
 - shrink / remove font files
 - markers on the big links? arrows?
 - heading link icons / text?
