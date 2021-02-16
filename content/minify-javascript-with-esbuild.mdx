@@ -1,9 +1,10 @@
 export const meta = {
   title: "Minify JavaScript with esbuild",
   slug: "/minify-javascript-with-esbuild",
+  date: "2020-02-12"
 };
 
-# esbuild
+# Minify JavaScript with esbuild
 
 [esbuild's website](https://esbuild.github.io/) says it's:
 
@@ -11,7 +12,7 @@ export const meta = {
 
 I want to minify some code without worrying about bundling. esbuild can do that too.
 
-Some [recent minifcation benchmarks](https://github.com/privatenumber/minification-benchmarks) mark it significantly faster than most other bundlers, and within a few percent on output filesize. 
+Some [recent minifcation benchmarks](https://github.com/privatenumber/minification-benchmarks) mark it significantly faster than most other bundlers, and within a few percent on output filesize.
 
 Sounds good to me!
 
@@ -42,7 +43,7 @@ async function main(dir) {
 
   try {
     for await (const filePath of getFiles(dir)) {
-      if (filePath.endsWith(".js")) {      
+      if (filePath.endsWith(".js")) {
         const fileContents = await fs.readFile(filePath, "utf-8");
         const transformed = await service.transform(fileContents, options);
         await fs.writeFile(filePath, transformed.code);
@@ -106,7 +107,7 @@ async function main(dir) {
 }
 ```
 
-On my machine this minified ten files in ~22 milliseconds, vs ~35 milliseconds for the first version. 
+On my machine this minified ten files in ~22 milliseconds, vs ~35 milliseconds for the first version.
 
 I'd have to run this script millions of times to see any benefit from this optimisation. But at least I can confidently state my official conclusion: esbuild is pretty neat.
 

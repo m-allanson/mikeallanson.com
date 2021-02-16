@@ -1,27 +1,30 @@
 export const meta = {
   title: "Intro to Toast",
-  slug: "/intro-to-toast"
+  slug: "/intro-to-toast",
+  date: "2020-02-11"
 };
+
+# Intro to Toast
 
 ## What is toast?
 
 ## Getting started
 
-Run `npx create-toast minimal` to create a barebones toast site. 
+Run `npx create-toast minimal` to create a barebones toast site.
 
 There are other starters available in [the official starters repo](https://github.com/toastdotdev/starters).
 
-### Adding a static page
+### Add a static page
 
 By default toast will check the `/src/pages/` directory, turning each `.js` file into an html page at build time.
 
 The minimal starter gives you a `/src/pages/index.js` file, which builds to `/public/index.html`.
 
-### Providing data to pages
+### Provide data to pages
 
-The `/src/pages/` directory is great for static pages. What about adding external data to your pages? 
+The `/src/pages/` directory is great for static pages. What about adding external data to your pages?
 
-You can use a `toast.js` file in the root of your project to hook into Toast's page creation process. 
+You can use a `toast.js` file in the root of your project to hook into Toast's page creation process.
 
 A minimal `toast.js` file can look like this:
 
@@ -60,7 +63,7 @@ You're free to source your data however you like. When your data is ready, use `
 
 `setDataForSlug` is used to create pages and provide them with data.
 
-`setDataForSlug` requires `slug` and `pageArgs` parameters. `slug` sets the url path for your created page. `pageArgs` defines how to render the page. 
+`setDataForSlug` requires `slug` and `pageArgs` parameters. `slug` sets the url path for your created page. `pageArgs` defines how to render the page.
 
 `pageArgs` is an object with two top level keys:
 
@@ -76,9 +79,9 @@ You're free to source your data however you like. When your data is ready, use `
 
 > Note: pageArgs can have other keys, you can [read more about the design of this API on GitHub](https://github.com/toastdotdev/toast/issues/29).
 
-Calling `setDataForSlug` multiple times for the same `slug` will cause Toast to merge the `pageArgs` from every call. 
+Calling `setDataForSlug` multiple times for the same `slug` will cause Toast to merge the `pageArgs` from every call.
 
-`setDataForSlug` is used by Toast when creating pages from files in your `/src/pages/` directory. 
+`setDataForSlug` is used by Toast when creating pages from files in your `/src/pages/` directory.
 
 The above two points mean that you can push data into your filesystem components. For example:
 
@@ -110,7 +113,7 @@ export const sourceData = async ({ setDataForSlug }) => {
 
 
 
-This will create a page at `/my-page`, that looks like: 
+This will create a page at `/my-page`, that looks like:
 
 [A browser shows a webpage with the text 'Hello, world'](./hello-world.png)
 
@@ -147,16 +150,23 @@ export default props => <div>
 
 
 
-Configuration consists of a function export called `sourceData`. `sourceData` is passed an object 
+Configuration consists of a function export called `sourceData`. `sourceData` is passed an object
 
 sourceData
 sourceMdx
 
+#### Wrap pages
 
-#### `setDataForSlug`
-
+page-wrapper.js. API to set your own page wrapper.
 
 ### MDX
+
+### Static assets
+
+The contents of `/static` will be copied into the root of the output directory (`/public`).
+
+So `/static/fonts/my-font-file.woff2` would be available at the URL `/fonts/my-font-file.woff2`.
+
 
 ###
 
@@ -177,3 +187,4 @@ jacobbolda
 blannon
 toast.dev
 christopherbiscardi
+https://github.com/ajstrand/personal-site
