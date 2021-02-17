@@ -77,6 +77,7 @@
 
   /* element and 'brand' colours */
   --background: var(--blue-gray-50);
+  --background-inverse: var(--blue-gray-700);
   --sunken: var(--blue-gray-100);
   --drop: var(--blue-gray-200);
   --accent: var(--yellow-100);
@@ -425,7 +426,8 @@ div[is="notes"] {
 /* Code blocks */
 
 div[is="code"] {
-  background-color: hsl(var(--sunken));
+  /* TODO: prism theme that works on a light bg */
+  background-color: hsl(var(--background-inverse));
   border-block: 0.1rem solid hsl(var(--drop));
   margin-block: 1em;
   margin-inline: var(--margin-pull);
