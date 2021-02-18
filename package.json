@@ -18,7 +18,7 @@
     "check": "concurrently  --names \"css,format,js\" -c \"bgCyan.black,bgMagenta.black,bgWhite.black\" \"npm:check:css\" \"npm:check:format\" \"npm:check:js\"",
     "test": "npm run check",
     "format": "prettier '**/*.{css,html,js,md,mdx,yml}' --write --ignore-path .gitignore",
-    "watch": "nodemon --watch src --watch content --ext mdx,js,css --exec npm run build"
+    "watch": "nodemon --watch src --watch toast.js --watch content --ext mdx,js,css --exec npm run build"
   },
   "dependencies": {
     "@ibm/plex": "^5.1.3",
