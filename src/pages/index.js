@@ -35,7 +35,7 @@ const IndexPage = ({ posts }) => {
       {posts &&
         posts.map((post) => (
           <article is="note-link" key={post.slug}>
-            <a class={styleIterator.next().value} href={`/${post.slug}`}>
+            <a class={styleIterator.next().value} href={`${post.slug}`}>
               <span>{post.title}</span>
             </a>
           </article>
