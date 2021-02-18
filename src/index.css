@@ -123,7 +123,12 @@ html {
   color: hsl(var(--text));
   color-scheme: light dark;
   font-family: var(--font-body);
+}
+
+body {
   font-size: 93.75%;
+  margin: 0 auto;
+  max-inline-size: 90rem;
 
   @media (min-width: 40rem) {
     font-size: 100%;
@@ -136,11 +141,6 @@ html {
   @media (min-width: 72rem) {
     font-size: 112.5%;
   }
-}
-
-body {
-  margin: 0 auto;
-  max-inline-size: 90rem;
 }
 
 main {
