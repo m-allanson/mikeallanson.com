@@ -74,8 +74,8 @@ You're free to source your data however you like. When your data is ready, use `
 }
 ```
 
-- `component` describes the component tha will be used to render the page
-- `data` provides and data that's needed to render the page
+- `component` describes the component that will be used to render the page
+- `data` provides any data that's needed to render the page
 
 > Note: `pageArgs` can have other keys, you can [read more about `pageArgs` in the Toast repo](https://github.com/toastdotdev/toast/issues/29).
 
@@ -108,7 +108,7 @@ export const sourceData = async ({ setDataForSlug }) => {
 };
 ```
 
-This will create a page at `/my-page`, that renders with the page build time.
+This will create a page at `/my-page` that displays the time that the page was built.
 
 Here's the same example, except passing the component in to `setDataForSlug`:
 
