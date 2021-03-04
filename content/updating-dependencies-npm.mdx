@@ -35,17 +35,17 @@ shopify-api-node                     3.6.1     3.6.5     3.6.5
 typescript                           4.1.3     4.1.5     4.1.5
 ```
 
-Use `npm install` to update any _in range_ dependencies.
+Use `npm install <packagename>` to update a package's _in range_ dependencies.
 
 ## Update all dependencies
 
-Often you want to update to newer versions than those allowed in your `package.json`.
+Often you want to update to newer versions than those allowed in your `package.json`, or just want to update _everything_.
 
 Use [`npm-check-updates`](https://github.com/raineorshine/npm-check-updates) for this.
 
 Run once in interactive mode:
 
-- `npx ncu -i`
+- `npx npm-check-updates -i`
 
 Then select the packages you want to update. This will update your `package.json` only. You still need to install the updated versions. Like this:
 
