@@ -1,7 +1,7 @@
 export const meta = {
   title: "Intro to Toast",
   slug: "/intro-to-toast",
-  date: "2020-02-11"
+  date: "2020-02-11",
 };
 
 # Intro to Toast
@@ -42,7 +42,7 @@ export default props => <div>
       mode: "source",
       value: componentSrc,
     },
-  }
+  };
 
   await setDataForSlug("/my-page", pageArgs);
 
@@ -90,10 +90,12 @@ The above two points mean that you can push data into your filesystem components
 import { h } from "preact";
 
 export default (props) => {
-  return <div>
-    <h1>The Smallest Toast Example</h1>
-    <p>This page built at {props.buildTime}</p>
-  </div>
+  return (
+    <div>
+      <h1>The Smallest Toast Example</h1>
+      <p>This page built at {props.buildTime}</p>
+    </div>
+  );
 };
 ```
 
@@ -127,9 +129,9 @@ export default props => <div>
       value: componentSrc,
     },
     data: {
-      builtAt: new Date()
-    }
-  }
+      builtAt: new Date(),
+    },
+  };
 
   await setDataForSlug("/my-page", pageArgs);
 
@@ -180,10 +182,10 @@ The page content is available in `props.children`.
 
 ```js
 // toast.js
-  await setDataForSlug("/", {
-    wrapper: {
-      mode: "source",
-      value: `
+await setDataForSlug("/", {
+  wrapper: {
+    mode: "source",
+    value: `
 import { h } from "preact";
 export default props => (
   <div style={{backgroundColor: 'hotpink';}}>
@@ -191,8 +193,8 @@ export default props => (
   </div>
 )
 `,
-    },
-  });
+  },
+});
 ```
 
 Programmatically setting the wrapper component is not implemented yet (using `toast@0.3.43`).
