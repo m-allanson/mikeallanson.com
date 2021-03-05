@@ -127,8 +127,7 @@ html {
 
 body {
   font-size: 93.75%;
-  margin: 0 auto;
-  max-inline-size: 90rem;
+  margin: 0;
 
   @media (min-width: 40rem) {
     font-size: 100%;
@@ -372,7 +371,7 @@ header[role="banner"] {
 }
 
 div[is="notes"] {
-  margin-inline: var(--margin-pull);
+  margin-inline-start: var(--margin-pull);
 
   & > h1 {
     padding-inline: 1rem;
