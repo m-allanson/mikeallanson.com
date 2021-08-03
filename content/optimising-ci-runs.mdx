@@ -36,7 +36,7 @@ The setup was a number of jobs running in parallel:
 - shortJobC --|
 ```
 
-Meant that `longJob` would only run after all the `shortJob`s failed. This made individual CI runs take slightly longer, but massively reduced the overall number of CI minutes used.
+Meant that `longJob` would only run after all the `shortJob`s passed. This made individual CI runs take slightly longer, but massively reduced the overall number of CI minutes used.
 
 ## Other optimisations
 
@@ -46,4 +46,4 @@ Other optimisations fell into the following few categories:
 - Optimise slow work
 - Cache results of expensive work
 
-Remove, reduce or re-use. I guess that's a general lesson that can be applied to any code.
+Remove, reduce or re-use. I guess that's a general lesson for any code.
