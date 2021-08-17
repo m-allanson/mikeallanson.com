@@ -353,14 +353,17 @@ header[role="banner"] {
     text-transform: uppercase;
 
     &:hover {
-      /* thank you https://www.news47ell.com/articles/use-svg-css-instead-text-decoration-underline/ */
-      background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" id="wiggle"><style>.a{opacity:0.5; color: hsl(272 71.7% 47.1%); animation:shift 4s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}</style><path fill="none" stroke="currentColor" d="M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3" class="a"/></svg>');
+      background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" id="wiggle"><style>.a{opacity:0.5; color: hsl(272 71.7% 47.1%);}</style><path fill="none" stroke="currentColor" d="M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3" class="a"/></svg>');
       background-position-y: 5px;
       background-size: 20px 4px;
       color: hsl(var(--banner-highlight));
       text-decoration: none;
       text-shadow: -1px 0 1px hsl(var(--white)), 1px 0 1px hsl(var(--white)),
         0 1px 1px hsl(var(--white)), 0 -1px 1px hsl(var(--white));
+      @media (prefers-reduced-motion: no-preference) {
+        /* Add wiggles to the squiggles. Thank you https://www.news47ell.com/articles/use-svg-css-instead-text-decoration-underline/ */
+        background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" id="wiggle"><style>.a{opacity:0.5; color: hsl(272 71.7% 47.1%); animation:shift 4s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}</style><path fill="none" stroke="currentColor" d="M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3" class="a"/></svg>');
+      }
     }
 
     &:focus {
