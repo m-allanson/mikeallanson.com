@@ -433,15 +433,16 @@ div[is="code"] {
   padding-inline: 1rem;
 }
 
-a[is="headingLinkAnchor"] {
-  font-size: 1em;
-  margin-inline-end: 0.25rem;
-  opacity: 50%;
-  text-decoration: none;
+[is="postHeading"] {
+  color: hsl(var(--text));
 
-  &:hover,
-  &:focus {
-    text-decoration: underline;
+  & > a {
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
   }
 }
 
