@@ -3,6 +3,7 @@
 - custom prism styles?
 - readme
 - a11y double check (stylelint-a11y?)
+- styles for quote blocks
 - dark mode toggle
 - dark mode styles :D
 - how to insert title into post from post metadata. instead of copy + pasting into post body
@@ -11,10 +12,10 @@
 - markers on the big links? arrows?
 - heading link icons / text?
 - meta tags
-- figure out how to hook to an Obsidian vault for writing. Check this out https://dev.to/bathrobe/creating-a-diy-digital-garden-with-obsidian-and-gatsby-378e
+- figure out how to hook to an Obsidian vault for writing. (Maybe, what about MDX?) Check this out https://dev.to/bathrobe/creating-a-diy-digital-garden-with-obsidian-and-gatsby-378e
 - font size balancing? See: https://fontdrop.info/ and https://codepen.io/simonjhearne/pen/rNMGJyr
 - background/header image on posts? hash post content and use hash as a seed for something generative? e.g. https://coolbackgrounds.io/ (triangilify) or https://jasonwebb.github.io/2d-differential-growth-experiments/experiments/07%20-%20bounds/
-- give this a proper home. I guess replace https://github.com/m-allanson/portfolio
+- ~give this a proper home. I guess replace https://github.com/m-allanson/portfolio~
 - ~sort by date~
 - ~tidy CSS~
 - ~focus reset should use @supports focus-visible for safari~
