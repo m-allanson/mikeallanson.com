@@ -1,4 +1,4 @@
-import rank from "hast-util-heading-rank";
+import { headingRank } from "hast-util-heading-rank";
 import visit from "unist-util-visit";
 
 export default function label() {
@@ -29,7 +29,7 @@ export default function label() {
 
   return (tree) =>
     visit(tree, "element", (node /*, index, parent*/) => {
-      if (rank(node)) {
+      if (headingRank(node)) {
         const text = node.children.find((n) => n.type === "text");
         const anchor = node.children.find((n) => n.tagName === "a");
 
@@ -38,7 +38,7 @@ export default function label() {
         delete anchor.properties.className;
 
         // add links to h2 -> h6 only
-        node.children = rank(node) > 1 ? [anchor] : [text];
+        node.children = headingRank(node) > 1 ? [anchor] : [text];
         return node;
       }
     });
