@@ -152,12 +152,7 @@ import { Helmet } from "react-helmet";
 import { MDXProvider } from "@mdx-js/preact";
 
 const components = {
-  codeblock: (props) => (
-    <div
-      class="bg-gray-900"
-      dangerouslySetInnerHTML={{ __html: props.children }}
-    />
-  ),
+  codeblock: (props) => <div class="bg-gray-900" {...props} />,
 };
 
 export default function PageWrapper(props) {
