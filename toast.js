@@ -1,4 +1,4 @@
-import { fetchMdxFromDisk, processMdx } from "@toastdotdev/mdx";
+import { fetchMdxFromDisk, processMdx, sourceMdx } from "@toastdotdev/mdx";
 import modifyHeadingAnchors from "./src/modify-heading-anchors.js";
 
 const rehypePlugins = [modifyHeadingAnchors];
@@ -35,6 +35,12 @@ export const sourceData = async ({ setDataForSlug }) => {
 
   await setDataForSlug("/", {
     data: { posts: allPostMeta, pageType: "page" },
+  });
+
+  await sourceMdx({
+    setDataForSlug,
+    directory: "./src/components",
+    slugPrefix: "/components",
   });
 
   return;
