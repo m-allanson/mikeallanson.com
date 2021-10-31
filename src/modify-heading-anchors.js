@@ -30,15 +30,17 @@ export default function label() {
   return (tree) =>
     visit(tree, "element", (node /*, index, parent*/) => {
       if (headingRank(node)) {
-        const text = node.children.find((n) => n.type === "text");
+        const textNodes = node.children.filter(
+          (n) => n.type === "text" || n.tagName === "inlineCode"
+        );
         const anchor = node.children.find((n) => n.tagName === "a");
 
         node.properties.is = "postHeading";
-        anchor.children = [text];
+        anchor.children = textNodes;
         delete anchor.properties.className;
 
         // add links to h2 -> h6 only
-        node.children = headingRank(node) > 1 ? [anchor] : [text];
+        node.children = headingRank(node) > 1 ? [anchor] : textNodes;
         return node;
       }
     });
