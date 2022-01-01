@@ -1,7 +1,7 @@
 export const meta = {
   title: "Loading Modules in the Browser",
   slug: "/loading-modules-in-the-browser",
-  date: "2021-07-26"
+  date: "2021-07-26",
 };
 
 # Loading Modules in the Browser
@@ -9,7 +9,7 @@ export const meta = {
 Use:
 
 ```js
-<script type="module" src="myFile.js" ></script>
+<script type="module" src="myFile.js"></script>
 ```
 
 The `defer` attribute is automatically implied. `defer` allows the browser to download and parse the script in parallel with HTML parsing. The script is executed after the document has been parsed, but before `DOMContentLoaded`.
