@@ -17,3 +17,8 @@ assert.deepEqual(
   "hsl(50, 59.5%, 70%)",
   "Colours do not match"
 );
+assert.deepEqual(
+  hexToHSL("#0000ff"),
+  "hsl(240, 100%, 50%)",
+  "Colours do not match"
+);
