@@ -449,6 +449,12 @@ div[is="code"] {
   }
 }
 
+[is="mainFooter"] {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
 /* Skip */
 
 /* There's nothing to skip yet */

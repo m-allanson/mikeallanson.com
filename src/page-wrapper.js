@@ -43,6 +43,9 @@ export default function PageWrapper(props) {
         </a>
       </header>
       <main>{props.children}</main>
+      <footer is="mainFooter">
+        <a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a>
+      </footer>
     </MDXProvider>
   );
 }
