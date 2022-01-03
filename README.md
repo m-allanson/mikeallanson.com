@@ -22,7 +22,7 @@
 - heading link icons / text?
 - custom prism styles?
 - font size balancing? See: https://fontdrop.info/ and https://codepen.io/simonjhearne/pen/rNMGJyr
-- Or, just some sort of cohesive approach to the design?
+- Or, some sort of cohesive approach to the design that covers all of the above!
 - figure out how to hook to an Obsidian vault for writing. (Maybe, what about MDX?) Check this out https://dev.to/bathrobe/creating-a-diy-digital-garden-with-obsidian-and-gatsby-378e
 - background/header image on posts? hash post content and use hash as a seed for something generative? e.g. https://coolbackgrounds.io/ (triangilify) or https://jasonwebb.github.io/2d-differential-growth-experiments/experiments/07%20-%20bounds/
 
