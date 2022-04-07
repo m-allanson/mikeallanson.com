@@ -17,51 +17,57 @@ I recently set up a macOS dev machine from scratch. This is my notes on the step
 
 Homebrew takes a while to install. Tick through the System Preferences in the meantime.
 
-
 ## System Preferences
 
 - Log in with Apple ID
 
 ### General
-	- Appearance auto
+
+    - Appearance auto
 
 ### Desktop & Screensaver
-	- Hot corners bottom right puts display to sleep
 
-### Dock & Menu Bar 
-	- Move dock to left
-	- Auto hide dock
-	- Disable open animations
-	- Bluetooth show in menu bar 
-	- Focus show in menu bar always
-	- A11y shortcuts show in Control Centre
-	- Clock no day of week or date
-	- Spotlight don't show in menu bar
+    - Hot corners bottom right puts display to sleep
+
+### Dock & Menu Bar
+
+    - Move dock to left
+    - Auto hide dock
+    - Disable open animations
+    - Bluetooth show in menu bar
+    - Focus show in menu bar always
+    - A11y shortcuts show in Control Centre
+    - Clock no day of week or date
+    - Spotlight don't show in menu bar
 
 ### Security & Privacy
-	- Require password 5 seconds after sleep or screen saver
-	- Turn on FileVault TODO
-	- Turn on Firewall? Is this going to be a pita?
-	- Privacy 
-		- Disable personalised Ads
 
-### Trackpad 
-  - Increase tracking speed until it feels right.
+    - Require password 5 seconds after sleep or screen saver
+    - Turn on FileVault TODO
+    - Turn on Firewall? Is this going to be a pita?
+    - Privacy
+    	- Disable personalised Ads
 
-### Keyboard 
-	- Modifier keys - Make Caps Lock key map to Escape (for touchbar mac without physical escape key)
-	- Touchbar shows expanded control strip
-	- Press fn key to show emojis
-	- Customise control strip
-	- Disable some mission control shortcuts (ctrl + up/down)
-	- Set key repeat to max speed
-	- Shortcuts -> Use keyboard navigation to move focus between controls
+### Trackpad
+
+- Increase tracking speed until it feels right.
+
+### Keyboard
+
+    - Touchbar shows expanded control strip
+    - Press fn key to show emojis
+    - Customise control strip
+    - Disable some mission control shortcuts (ctrl + up/down)
+    - Set key repeat to max speed
+    - Shortcuts -> Use keyboard navigation to move focus between controls
 
 ### Spotlight
- - categories - Applications, Calculator, Conversion, Folders, 
- 
+
+- categories - Applications, Calculator, Conversion, Folders,
+
 ### System Preferences
-  - Set up Touch ID
+
+- Set up Touch ID
 
 ## System defaults
 
@@ -81,7 +87,6 @@ defaults write com.apple.finder ShowStatusBar -bool true
 
 > Credit to [taniarascia.com](https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/#defaults) for these settings.
 
-
 ## Install apps
 
 ```
@@ -97,33 +102,33 @@ slack \
 spotify  \
 starship \
 visual-studio-code \
-volta \ 
+volta \
 jq \
 kubectl
 ```
 
 ## Firefox
-  
-  - Set as default browser
-  - Set duckduckgo as default search
-  - Disable any sponsored suggestions
-  - Open previous windows and tabs when starting
-  - Disable 'confirm before quitting with command+Q'
-  - Set language to English UK
-  - Set mailto links to 'always ask'
-  - Disable 'save logins and passwords'
-  - Enable https only
+
+- Set as default browser
+- Set duckduckgo as default search
+- Disable any sponsored suggestions
+- Open previous windows and tabs when starting
+- Disable 'confirm before quitting with command+Q'
+- Set language to English UK
+- Set mailto links to 'always ask'
+- Disable 'save logins and passwords'
+- Enable https only
 
 ### Extensions
 
-	- 1Password
-	- ClearURLs
-	- Containerise
-	- I don't care about cookies
-	- Multi-Account Containers
-	- Nitter redirect?
-	- Privacy Badger
-	- uBlock origin
+- 1Password
+- ClearURLs
+- Containerise
+- I don't care about cookies
+- Multi-Account Containers
+- Nitter redirect?
+- Privacy Badger
+- uBlock origin
 
 ## dotfiles
 
@@ -138,7 +143,7 @@ Grab dotfiles from [m-allanson/dotfiles](https://github.com/m-allanson/dotfiles)
 - Profiles -> Terminal -> Set scrollback lines to unlimited
 - Profiles -> Text -> Font "SF Mono Nerd Font"
 - To enable text navigation with opt + arrow, and cmd + arrow
-	- Profiles -> Keys -> Key Mappings -> Presets -> Natural Text Editing
+  - Profiles -> Keys -> Key Mappings -> Presets -> Natural Text Editing
 
 ## VSCode
 
@@ -148,10 +153,11 @@ Grab dotfiles from [m-allanson/dotfiles](https://github.com/m-allanson/dotfiles)
 - Disable View -> Appearance -> Activity Bar
 - Settings -> Editor: Font family, set to `'SFMono Nerd Font Mono', Zapfino, Menlo, Monaco, 'Courier New', monospace`
 - Move side bar right
+- Disable minimap
 
 ### VSCode plugins
 
-- 
+-
 
 ## Other apps
 
@@ -174,7 +180,7 @@ Grab dotfiles from [m-allanson/dotfiles](https://github.com/m-allanson/dotfiles)
 ## Other system config
 
 - Sort out SSH keys
-- Apply licenses to purchased software
+- Apply licences to purchased software
 - [Add Fastmail contacts and calendar](https://www.fastmail.help/hc/en-us/articles/1500000277682)
 - Configure backups
 
