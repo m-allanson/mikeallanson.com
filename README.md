@@ -6,11 +6,10 @@
 - a11y double check (stylelint-a11y?)
 - styles for quote blocks
 - responsivitivity
-- "🪲🪲🪲" is not a very helpful page title
 - meta tags / og data
 - properly update readme
 - add RSS feed
-- streamline the 'new post' workflow to be less manual. Maybe modify `dg` tool from https://egghead.io/courses/creating-a-digital-garden-cli-with-rust-34b8 
+- streamline the 'new post' workflow to be less manual. Maybe modify `dg` tool from https://egghead.io/courses/creating-a-digital-garden-cli-with-rust-34b8
 - dark mode toggle
 - dark mode styles :D
 - automate dependency updates
@@ -20,13 +19,15 @@
 - A whole load of design stuff, like...
 - markers on the big links? arrows?
 - heading link icons / text?
-- custom prism styles?
+- custom prism styles? Use shiki / shikiRehype with iceberg theme?
 - font size balancing? See: https://fontdrop.info/ and https://codepen.io/simonjhearne/pen/rNMGJyr
 - Or, some sort of cohesive approach to the design that covers all of the above!
 - figure out how to hook to an Obsidian vault for writing. (Maybe, what about MDX?) Check this out https://dev.to/bathrobe/creating-a-diy-digital-garden-with-obsidian-and-gatsby-378e
 - background/header image on posts? hash post content and use hash as a seed for something generative? e.g. https://coolbackgrounds.io/ (triangilify) or https://jasonwebb.github.io/2d-differential-growth-experiments/experiments/07%20-%20bounds/
 
 ### Done
+
+- ~"🪲🪲🪲" is not a very helpful page title~
 - ~give this a proper home. I guess replace https://github.com/m-allanson/portfolio~
 - ~sort by date~
 - ~tidy CSS~
