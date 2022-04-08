@@ -1,5 +1,5 @@
 import { fetchMdxFromDisk, processMdx, sourceMdx } from "@toastdotdev/mdx";
-import modifyHeadingAnchors from "./src/modify-heading-anchors.js";
+import modifyHeadingAnchors from "./src/utils/source-transforms/modify-heading-anchors.js";
 
 const rehypePlugins = [modifyHeadingAnchors];
 
