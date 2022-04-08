@@ -35,7 +35,7 @@ export default function PageWrapper(props) {
           name="description"
           content="TODO!! Here is my lovely placeholder description"
         />
-        <title>🪲🪲🪲</title>
+        <title>{props.title ? `${props.title} 🪲 ` : ""}mikeallanson.com</title>
       </Helmet>
       <header role="banner">
         <a href="/" aria-label="Mike Allanson">
@@ -44,7 +44,9 @@ export default function PageWrapper(props) {
       </header>
       <main>{props.children}</main>
       <footer is="mainFooter">
-        <a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a>
+        <a href="https://github.com/m-allanson/mikeallanson.com">
+          Source available on GitHub
+        </a>
       </footer>
     </MDXProvider>
   );
