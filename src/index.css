@@ -453,6 +453,12 @@ div[is="code"] {
   padding: 1rem;
 }
 
+code {
+  background-color: hsl(var(--blue-gray-200));
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
 /* Skip */
 
 /* There's nothing to skip yet */
