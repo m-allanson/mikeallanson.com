@@ -219,7 +219,6 @@ body {
   color-scheme: light dark;
   font-family: var(--font-body);
   font-size: var(--step--1);
-  padding: 0 0 2rem;
 }
 
 /**
@@ -327,7 +326,7 @@ blockquote p:last-child::after {
 
 p,
 li {
-  max-width: 60ch;
+  max-width: 55ch;
 }
 
 h1,
@@ -350,6 +349,7 @@ h3 {
 header[role="banner"] {
   & > a {
     background-color: transparent;
+    color: hsl(var(--blue-gray-600));
     display: inline-block;
     font-size: var(--step-1);
     font-weight: 700;
@@ -482,8 +482,12 @@ div[is="code"] {
 }
 
 [is="mainFooter"] {
+  background-color: hsl(var(--blue-gray-800));
+  color: hsl(var(--blue-gray-100));
   display: flex;
+  font-size: var(--step--2);
   justify-content: flex-end;
+  margin-block-start: var(--step-4);
   padding: 1rem;
 }
 
