@@ -43,7 +43,8 @@
       "/^inset": ["rem"],
       "/^margin/": ["em", "rem", "vw"],
       "/^padding/": ["em", "rem"],
-      "/outline/": ["px"]
+      "/outline/": ["px"],
+      "outline-offset": ["rem"]
     },
     "font-weight-notation": "numeric",
     "function-allowed-list": [
@@ -56,6 +57,7 @@
       "hsl",
       "linear-gradient",
       "minmax",
+      "min",
       "polygon",
       "repeat",
       "rotate",
@@ -92,7 +94,7 @@
     ],
     "property-disallowed-list": [
       "/(min|max)-height/",
-      "/(min|max)-width/",
+      "/(min)-width/",
       "/bottom/",
       "/left/",
       "/right/",
@@ -123,7 +125,7 @@
         "units": ["em"]
       }
     ],
-    "scales/font-weights": [400, 700],
+    "scales/font-weights": [300, 400, 700, 900],
     "scales/line-heights": [1, 1.2, 1.5, 1.75],
     "scales/space": [
       {
@@ -157,7 +159,8 @@
       "last-of-type",
       "not",
       "root",
-      "visited"
+      "visited",
+      "last-child"
     ],
     "selector-pseudo-element-colon-notation": "double",
     "selector-type-no-unknown": [
@@ -167,7 +170,7 @@
       }
     ],
     "shorthand-property-no-redundant-values": true,
-    "unit-allowed-list": ["%", "deg", "em", "fr", "px", "rem", "s", "vw"],
+    "unit-allowed-list": ["%", "deg", "em", "fr", "px", "rem", "s", "vw", "ch"],
     "value-no-vendor-prefix": true
   }
 }

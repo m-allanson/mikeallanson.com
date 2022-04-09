@@ -7,8 +7,20 @@ const CodeBlock = (props) => (
   <div is="code" {...props} />
 );
 
+const Wrapper = ({ children }) => (
+  <article is="post" class="flow">
+    {children}
+  </article>
+);
+
+const BlockQuote = ({ children }) => (
+  <blockquote class="flow">{children}</blockquote>
+);
+
 const components = {
   codeblock: CodeBlock,
+  wrapper: Wrapper,
+  blockquote: BlockQuote,
 };
 
 export default function PageWrapper(props) {
