@@ -1,11 +1,6 @@
 {
   "extends": ["stylelint-config-recommended"],
-  "plugins": [
-    "@signal-noise/stylelint-scales",
-    "stylelint-order",
-    "stylelint-use-logical",
-    "stylelint-use-nesting"
-  ],
+  "plugins": ["@signal-noise/stylelint-scales", "stylelint-order"],
   "rules": {
     "alpha-value-notation": "percentage",
     "at-rule-allowed-list": ["font-face", "supports", "media"],
@@ -13,9 +8,7 @@
     "color-function-notation": "modern",
     "color-named": "never",
     "color-no-hex": true,
-    "csstools/use-logical": "always",
     "no-unknown-animations": true,
-    "csstools/use-nesting": "always",
     "custom-media-pattern": "^([a-z][a-z0-9]*)(-?)(-[a-z0-9]+)*$",
     "custom-property-empty-line-before": [
       "always",
