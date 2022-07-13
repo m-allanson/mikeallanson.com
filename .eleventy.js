@@ -9,7 +9,8 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const filterTagList = require("./filters/filterTagList");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/assets/fonts");
+  eleventyConfig.addPassthroughCopy("src/assets/images");
 
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
