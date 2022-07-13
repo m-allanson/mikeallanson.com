@@ -19,7 +19,7 @@ There are some great examples in the [git docs](https://git-scm.com/docs/git-reb
 
 Here's an example from the docs that covers my most common use-case. With branches like:
 
-```
+```shell
  o---o---o---o---o  main
          \
           o---o---o---o---o  next
@@ -29,7 +29,7 @@ Here's an example from the docs that covers my most common use-case. With branch
 
 And a desired layout of:
 
-```
+```shell
 o---o---o---o---o  main
         |            \
         |             o'--o'--o'  topic
