@@ -5,12 +5,21 @@
     {
       "name": "Base",
       "description": "System fonts for body copy and globally set text.",
-      "value": ["Inter", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"]
+      "value": [
+        "IBM Plex Sans",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ]
     },
     {
       "name": "Serif",
       "description": "Expressive sections, like quotes",
-      "value": ["Georgia", "sans-serif"]
+      "value": ["ui-serif", "Georgia", "serif"]
     }
   ]
 }
