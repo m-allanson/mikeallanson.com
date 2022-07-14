@@ -1,4 +1,7 @@
 .hr {
   border: 0;
   border-top: var(--space-xs) dashed var(--color-dark);
+  /* TODO: This margin should be applied at the layout level? */
+  margin-block-start: var(--space-m);
+  opacity: 80%;
 }

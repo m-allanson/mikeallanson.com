@@ -9,11 +9,11 @@ One iterates over values and one over properties. But which is which? Lucky you,
 
 ## The difference
 
-[MDN says](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#difference_between_for...of_and_for...in):
-
 > The for...in statement iterates over the enumerable properties of an object, in an arbitrary order.
 >
 > The for...of statement iterates over values that the iterable object defines to be iterated over.
+>
+> [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#difference_between_for...of_and_for...in)
 
 Thank you, MDN (always).
 

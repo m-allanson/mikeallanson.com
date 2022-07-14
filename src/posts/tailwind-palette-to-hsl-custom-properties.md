@@ -15,7 +15,7 @@ If I were feeling pragmatic I'd manually convert the few colours I'm interested 
 
 [I wrote a script](https://github.com/m-allanson/mikeallanson.com/blob/a78386ca2673bc402add9328d97407e6747b783b/src/utils/twColours/index.js) that takes Tailwind's `colours` object and converts it to a string of CSS custom properties. It swaps the RGB hex values over to HSL at the same time.
 
-> Credit to [CSS Tricks for the hex to HSL conversion function](https://css-tricks.com/converting-color-spaces-in-javascript/) (and of course Tailwind for the colours).
+A> Credit to [CSS Tricks for the hex to HSL conversion function](https://css-tricks.com/converting-color-spaces-in-javascript/) (and of course Tailwind for the colours).
 
 The output looks like this:
 

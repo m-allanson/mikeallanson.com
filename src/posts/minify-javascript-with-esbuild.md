@@ -4,7 +4,7 @@ date: 2021-02-12
 updated: 2021-09-11
 ---
 
-> _Update 2021-09-11:_ [`esbuild v0.9.0`](https://github.com/evanw/esbuild/releases/tag/v0.9.0) removed support for the `startService` API used in this post. For `esbuild v0.12.26`, [this script](https://github.com/m-allanson/mikeallanson.com/blob/8a36ff8b3c3c21d4f478025a342dbd0e06ba4b9d/scripts/minify-js.js) is working for me.
+A> _Update 2021-09-11:_ [`esbuild v0.9.0`](https://github.com/evanw/esbuild/releases/tag/v0.9.0) removed support for the `startService` API used in this post. For `esbuild v0.12.26`, [this script](https://github.com/m-allanson/mikeallanson.com/blob/8a36ff8b3c3c21d4f478025a342dbd0e06ba4b9d/scripts/minify-js.js) is working for me.
 
 [esbuild's website](https://esbuild.github.io/) says it's:
 
