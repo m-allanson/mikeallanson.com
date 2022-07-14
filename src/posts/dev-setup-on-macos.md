@@ -20,30 +20,30 @@ Homebrew takes a while to install. Tick through the System Preferences in the me
 
 ### General
 
-    - Appearance auto
+- Appearance auto
 
 ### Desktop & Screensaver
 
-    - Hot corners bottom right puts display to sleep
+- Hot corners bottom right puts display to sleep
 
 ### Dock & Menu Bar
 
-    - Move dock to left
-    - Auto hide dock
-    - Disable open animations
-    - Bluetooth show in menu bar
-    - Focus show in menu bar always
-    - A11y shortcuts show in Control Centre
-    - Clock no day of week or date
-    - Spotlight don't show in menu bar
+- Move dock to left
+- Auto hide dock
+- Disable open animations
+- Bluetooth show in menu bar
+- Focus show in menu bar always
+- A11y shortcuts show in Control Centre
+- Clock no day of week or date
+- Spotlight don't show in menu bar
 
 ### Security & Privacy
 
-    - Require password 5 seconds after sleep or screen saver
-    - Turn on FileVault TODO
-    - Turn on Firewall? Is this going to be a pita?
-    - Privacy
-     - Disable personalised Ads
+- Require password 5 seconds after sleep or screen saver
+- Turn on FileVault TODO
+- Turn on Firewall? Is this going to be a pita?
+- Privacy
+  - Disable personalised Ads
 
 ### Trackpad
 
@@ -51,16 +51,17 @@ Homebrew takes a while to install. Tick through the System Preferences in the me
 
 ### Keyboard
 
-    - Touchbar shows expanded control strip
-    - Press fn key to show emojis
-    - Customise control strip
-    - Disable some mission control shortcuts (ctrl + up/down)
-    - Set key repeat to max speed
-    - Shortcuts -> Use keyboard navigation to move focus between controls
+- Touchbar shows expanded control strip
+- Press fn key to show emojis
+- Customise control strip
+- Disable some mission control shortcuts (ctrl + up/down)
+- Set key repeat to max speed
+- Shortcuts -> Use keyboard navigation to move focus between controls
 
 ### Spotlight
 
-- categories - Applications, Calculator, Conversion, Folders,
+- Categories
+  - Applications, Calculator, Conversion, Folders,
 
 ### System Preferences
 
@@ -82,7 +83,7 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 ```
 
-> Credit to [taniarascia.com](https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/#defaults) for these settings.
+A> Credit to [taniarascia.com](https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/#defaults) for the system defaults settings.
 
 ## Install apps
 
@@ -133,7 +134,7 @@ Grab dotfiles from [m-allanson/dotfiles](https://github.com/m-allanson/dotfiles)
 
 ## iterm2
 
-- Install a 'nerd font'. I'm using a patched SF Mono "SF Mono Nerd Font" ([instructions available here](/patch-sf-mono-with-nerd-font-icons)). Maybe try Hack next time?
+- Install a 'nerd font'. I'm using a patched SF Mono "SF Mono Nerd Font" ([instructions available here](/patch-sf-mono-with-nerd-font-icons)). ~~Maybe try Hack next time?~~ I tried Hack and preferred SF Mono.
 - Get iceberg theme from <https://iterm2colorschemes.com/>
 - Appearance -> Panes -> uncheck 'Show per-pane title bar with split panes'
 - Profiles -> General -> Working Directory -> Reuse previous session's directory
