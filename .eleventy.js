@@ -9,8 +9,12 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const filterTagList = require("./filters/filterTagList");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/assets/fonts");
-  eleventyConfig.addPassthroughCopy("src/assets/images");
+  eleventyConfig.addPassthroughCopy(
+    "src/css/prism-night-owl-light-no-italics.css"
+  );
+  eleventyConfig.addPassthroughCopy("src/css/prism-night-owl-no-italics.css");
+  eleventyConfig.addPassthroughCopy("src/fonts");
+  eleventyConfig.addPassthroughCopy("src/images");
 
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);

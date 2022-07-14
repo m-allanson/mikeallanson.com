@@ -4,7 +4,7 @@
   "description": "A starter repository for a blog web site using the Eleventy static site generator.",
   "scripts": {
     "build:site": "npx @11ty/eleventy",
-    "build:css": "npx postcss src/assets/css/global.css -o dist/assets/css/global.css",
+    "build:css": "npx postcss src/css/global.css -o dist/css/global.css",
     "build": "NODE_ENV=production npm run build:site && NODE_ENV=production npm run build:css",
     "dev": "concurrently -c 'blue,magenta' 'npm run build:site -- --serve' 'npm run build:css -- --watch'",
     "format": "prettier --write ."
