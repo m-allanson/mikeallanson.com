@@ -1,7 +1,7 @@
 ---
-layout: layouts/post.njk
+layout: layouts/note.njk
 title: About
-templateClass: tmpl-post
+templateClass: tmpl-note
 eleventyNavigation:
   key: About
   order: 2

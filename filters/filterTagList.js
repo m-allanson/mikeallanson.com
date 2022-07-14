@@ -1,5 +1,5 @@
 module.exports = (tags) => {
   return (tags || []).filter(
-    (tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1
+    (tag) => ["all", "nav", "note", "notes"].indexOf(tag) === -1
   );
 };
