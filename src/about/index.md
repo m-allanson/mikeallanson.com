@@ -1,10 +1,12 @@
 ---
-layout: layouts/note.njk
+layout: layouts/about.njk
 title: About
-templateClass: tmpl-note
+templateClass: tmpl-about
 eleventyNavigation:
   key: About
   order: 2
 ---
 
-I am a person that writes stuff. This is my website.
+I am a person who writes things, sometimes. This is my unfinished website.
+
+Send an email to [hellohowareyou@mikeallanson.com](mailto:hellohowareyou@mikeallanson.com).

@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding-right: var(--space-xs);
+  margin-inline-end: var(--space-xs);
 }
 
 .site-header ul {
-  margin-top: 0;
+  margin: 0;
 }
