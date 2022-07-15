@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/patch-sf-mono-with-nerd-font-icons.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/patch-sf-mono-with-nerd-font-icons.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">Patch SF Mono with Nerd Font Icons 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="patch-sf-mono-with-nerd-font-icons" is="postHeading">Patch SF Mono with Nerd Font Icons</h1><p>Patch a font to include Nerd Font icons using their <a href="https://github.com/ryanoasis/nerd-fonts#font-patcher">font patcher script</a>.</p><h2 id="requirements" is="postHeading"><a href="#requirements">Requirements</a></h2><p>There's a Docker image that contains all the needed requirements, which is the approach I used. Check <a href="https://github.com/ryanoasis/nerd-fonts">the <code>ryanoasis/nerd-fonts</code> repo docs</a> for non-Docker approaches.</p><h2 id="why" is="postHeading"><a href="#why">Why?</a></h2><p>Mainly for the nice icons in <a href="https://starship.rs">Starship</a>. Also to understand how to do it.</p><p>Note that there are some repos that have a pre-patched SF Mono available to download. But I wanted to see what was involved in doing it myself.</p><h2 id="steps" is="postHeading"><a href="#steps">Steps</a></h2><h3 id="install-the-unpatched-font" is="postHeading"><a href="#install-the-unpatched-font">Install the unpatched font</a></h3><p>Download SF Mono from <a href="https://developer.apple.com/fonts/">developer.apple.com/fonts/</a></p><p>Run the installer</p><p>The files will be installed to <code>/Library/Fonts/</code></p><p>You should see the following:</p><div is="code" codestring="SF-Mono-Bold.otf\nSF-Mono-BoldItalic.otf\nSF-Mono-Heavy.otf\nSF-Mono-HeavyItalic.otf\nSF-Mono-Light.otf\nSF-Mono-LightItalic.otf\nSF-Mono-Medium.otf\nSF-Mono-MediumItalic.otf\nSF-Mono-Regular.otf\nSF-Mono-RegularItalic.otf\nSF-Mono-Semibold.otf\nSF-Mono-SemiboldItalic.otf"><pre style="color: #d6deeb; background-color: transparent;" class="prism-code language-undefined"><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-Bold.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-BoldItalic.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-Heavy.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-HeavyItalic.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-Light.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-LightItalic.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-Medium.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-MediumItalic.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-Regular.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-RegularItalic.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-Semibold.otf</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">SF-Mono-SemiboldItalic.otf</span></div></pre></div><p>Copy them out to somewhere like <code>~/Desktop/sf-mono-original</code>.</p><h3 id="create-the-patched-version" is="postHeading"><a href="#create-the-patched-version">Create the patched version</a></h3><p>To create the patched font:</p><div is="code" codestring="docker run --rm -v ~/Desktop/sf-mono-original:/in -v ~/Desktop/sf-mono-patched:/out nerdfonts/patcher --powerline --use-single-width-glyphs"><pre style="color: #d6deeb; background-color: transparent;" class="prism-code language-undefined"><div style="color: #d6deeb;" class="token-line"><span class="token plain">docker run --rm -v ~/Desktop/sf-mono-original:/in -v ~/Desktop/sf-mono-patched:/out nerdfonts/patcher --powerline --use-single-width-glyphs</span></div></pre></div><p>The output directory <code>~/Desktop/sf-mono-patched</code> will be created for you. When the conversion is finished open Font Book, and drag the patched fonts in to install them. Font Book might complain about some errors. No idea if they cause problems, I just ignored them.</p><p>The patched font name will be 'SFMono Nerd Font Mono', and should contain the NerfFont Powerline glyphs.</p></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

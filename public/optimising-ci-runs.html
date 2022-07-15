@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/optimising-ci-runs.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/optimising-ci-runs.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">Optimising CI Runs 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="optimising-ci-runs" is="postHeading">Optimising CI Runs</h1><p>I spent some time optimising the CI runs for a recent project.</p><p>In this case there were two dimensions to optimise against:</p><ul><li>total CI minutes used (each month)</li><li>duration of each CI run</li></ul><p>Usually improvements to one dimension improve the other. But sometimes they'd conflict.</p><h2 id="unparallelise-jobs" is="postHeading"><a href="#unparallelise-jobs">Unparallelise jobs</a></h2><p>In this case, slightly increasing each run duration led to a big reduction in total CI minutes used.</p><p>The setup was a number of jobs running in parallel:</p><div is="code" codestring="- shortJobA\n- shortJobB\n- shortJobC\n- longJob"><pre style="color: #d6deeb; background-color: transparent;" class="prism-code language-undefined"><div style="color: #d6deeb;" class="token-line"><span class="token plain">- shortJobA</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">- shortJobB</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">- shortJobC</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">- longJob</span></div></pre></div><p><code>longJob</code> would always run, even if all of the <code>shortJob</code>s failed. Changing the run ordering to:</p><div is="code" codestring="- shortJobA --|\n- shortJobB --|--&gt; longJob\n- shortJobC --|"><pre style="color: #d6deeb; background-color: transparent;" class="prism-code language-undefined"><div style="color: #d6deeb;" class="token-line"><span class="token plain">- shortJobA --|</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">- shortJobB --|--&gt; longJob</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">- shortJobC --|</span></div></pre></div><p>Meant that <code>longJob</code> would only run after all the <code>shortJob</code>s passed. This made individual CI runs take slightly longer, but massively reduced the overall number of CI minutes used.</p><h2 id="other-optimisations" is="postHeading"><a href="#other-optimisations">Other optimisations</a></h2><p>Other optimisations fell into the following few categories:</p><ul><li>Remove unneccessary work</li><li>Optimise slow work</li><li>Cache results of expensive work</li></ul><p>Remove, reduce or re-use. I guess that's a general lesson for any code.</p></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+import{headingRank as a}from"hast-util-heading-rank";import n from"unist-util-visit";function s(){return l=>n(l,"element",t=>{if(a(t)){const r=t.children.filter(e=>e.type==="text"||e.tagName==="inlineCode"),i=t.children.find(e=>e.tagName==="a");return t.properties.is="postHeading",i.children=r,delete i.properties.className,t.children=a(t)>1?[i]:r,t}})}export{s as default};

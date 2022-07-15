@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/a-post.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/a-post.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">A Post 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="a-post" is="postHeading">A Post</h1><p>and some content this content is such content.</p><p>conteeeeeent i like to write it write it</p><p>contentapalooza don't be a snoozer</p><div is="code" codestring="const thing = {};" class="language-js"><pre style="color: #d6deeb; background-color: transparent;" class="prism-code language-js"><div style="color: #d6deeb;" class="token-line"><span style="color: rgb(127, 219, 202);" class="token keyword">const</span><span class="token plain"> thing </span><span style="color: rgb(127, 219, 202);" class="token operator">=</span><span class="token plain"> </span><span style="color: rgb(199, 146, 234);" class="token punctuation">{</span><span style="color: rgb(199, 146, 234);" class="token punctuation">}</span><span style="color: rgb(199, 146, 234);" class="token punctuation">;</span></div></pre></div></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

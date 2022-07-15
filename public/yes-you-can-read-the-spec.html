@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/yes-you-can-read-the-spec.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/yes-you-can-read-the-spec.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">Yes, you can Read the Spec 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="yes-you-can-read-the-spec" is="postHeading">Yes, you can Read the Spec</h1><p>Computers are stupid, in that they only do exactly what you tell them to do. But computers are very human because it's mostly people who make them do things.</p><p>This applies to languages, libraries, frameworks, protocols and more. They're all rigid and well defined, but they were defined by people and people can be fuzzy.</p><h2 id="css-an-example" is="postHeading"><a href="#css-an-example">CSS, an example</a></h2><p>Let's take CSS as an example. Sometimes to understand something you need to read <a href="https://www.w3.org/Style/CSS/read.en.html">the spec</a>. Despite its dry language, the spec was written by humans. Sometimes, they even <a href="https://www.w3.org/Style/css2-updates/CR-CSS2-20090908-errata.html">make mistakes</a>.</p><p>Different humans then read that spec, and write code to translate its intent into behaviour. Sometimes those humans <a href="https://bugzilla.mozilla.org/buglist.cgi?quicksearch=css">make mistakes too</a>.</p><h2 id="mistakes-and-where-they-lead" is="postHeading"><a href="#mistakes-and-where-they-lead">Mistakes, and where they lead</a></h2><p>I often make mistakes. Sometimes because I'm careless or impatient. Sometimes because I don't understand how this particular thing works. I'll do a bit of trial and error, a bit of console logging, maybe Stack Overflow, or pick through the docs or someone's blog.</p><p>Sometimes that's not enough, and all I needed to do was read the spec.</p><h2 id="wizards-not-required" is="postHeading"><a href="#wizards-not-required">Wizards, not required</a></h2><p>Things like the CSS specification can seem impenetrable. But if you can write code, you can read a spec. It might be slow going, but the more you do it the easier it gets.</p><p>A specification is not magic. It was written, read, revised and edited by humans. You can read it too.</p></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

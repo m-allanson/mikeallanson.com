@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/for-in-or-for-of.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/for-in-or-for-of.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">For...in or For...of 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="forin-or-forof" is="postHeading">For...in or For...of</h1><p>I can never remember which is which when it comes to <code>for...in</code> and <code>for...of</code>.</p><p>One iterates over values and one over properties. But which is which? Lucky you, future me, you'll find out if you keep reading.</p><h2 id="the-difference" is="postHeading"><a href="#the-difference">The difference</a></h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#difference_between_for...of_and_for...in">MDN says</a>:</p><blockquote class="flow"><p>The for...in statement iterates over the enumerable properties of an object, in an arbitrary order.</p><p>The for...of statement iterates over values that the iterable object defines to be iterated over.</p></blockquote><p>Thank you, MDN (always).</p><p>In short:</p><ul><li><em>in</em> for properties</li><li><em>of</em> for values</li></ul><h2 id="other-looping-methods" is="postHeading"><a href="#other-looping-methods">Other looping methods</a></h2><p>You might want <code>for()</code>, <code>map()</code> or <code>forEach()</code> instead.</p><p>See MDN for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration">a few other looping approaches</a> that you might not want.</p></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

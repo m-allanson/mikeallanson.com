@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "@mdx-js/preact": "./@mdx-js/preact.js",
+    "preact": "./preact.js",
+    "preact/compat": "./preact/compat.js",
+    "preact/hooks": "./preact/hooks.js",
+    "react": "./preact/compat.js",
+    "react-helmet": "./react-helmet.js"
+  }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/understanding-focus-in-the-browser.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/understanding-focus-in-the-browser.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">Understanding Focus in the Browser 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="understanding-focus-in-the-browser" is="postHeading">Understanding Focus in the Browser</h1><p>It's difficult to implement good <a href="https://a11y.coffee/">a11y</a> for a web app without first understanding <code>focus</code>.</p><p>I've practical knowledge of focus and how it works, particularly in relation to DOM events and CSS. I've limited theoretical knowledge about it.</p><p>Questions:</p><ul><li>What <em>is</em> focus?</li><li>What (precisely) can be focussed?</li><li>What are the implications of an element being focussed?</li><li>Relationship between focus, ARIA attributes and assistive tech like screen readers?</li></ul><p>Starting point: <a href="https://html.spec.whatwg.org/multipage/interaction.html#focus">html.spec.whatwg.org/multipage/interaction.html#focus</a></p></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

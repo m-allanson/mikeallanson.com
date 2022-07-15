@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/src/pages/index.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/index.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><div is="notes"><h1>Notes</h1><article is="note-link"><a class="variant-1" href="/patch-sf-mono-with-nerd-font-icons"><span>Patch SF Mono with Nerd Font Icons</span></a></article><article is="note-link"><a class="variant-2" href="/import-export-from-photo-booth"><span>Import &amp; Export from Photo Booth</span></a></article><article is="note-link"><a class="variant-3" href="/dev-setup-on-macos"><span>Dev Setup on macOS</span></a></article><article is="note-link"><a class="variant-4" href="/the-typeof-type-operator"><span>The `typeof` Type Operator</span></a></article><article is="note-link"><a class="variant-5" href="/literal-types-and-as-const"><span>Literal Types and `as const`</span></a></article><article is="note-link"><a class="variant-4" href="/yes-you-can-read-the-spec"><span>Yes, you can Read the Spec</span></a></article><article is="note-link"><a class="variant-3" href="/understanding-focus-in-the-browser"><span>Understanding Focus in the Browser</span></a></article><article is="note-link"><a class="variant-2" href="/switch-context-for-a-fresh-perspective"><span>Switch Context for a Fresh Perspective</span></a></article><article is="note-link"><a class="variant-1" href="/using-tailwinds-colours-without-the-tooling"><span>Using Tailwind's Colours Without the Tooling</span></a></article><article is="note-link"><a class="variant-2" href="/change-a-commits-parent"><span>Change a commit's parent</span></a></article><article is="note-link"><a class="variant-3" href="/optimising-ci-runs"><span>Optimising CI Runs</span></a></article><article is="note-link"><a class="variant-4" href="/loading-modules-in-the-browser"><span>Loading Modules in the Browser</span></a></article><article is="note-link"><a class="variant-5" href="/pseudo-components-for-css"><span>Pseudo &quot;Components&quot; for CSS</span></a></article><article is="note-link"><a class="variant-4" href="/five-year-frontend"><span>Five Year Frontend</span></a></article><article is="note-link"><a class="variant-3" href="/node-and-esm-module-resolution"><span>Node and ESM module resolution</span></a></article><article is="note-link"><a class="variant-2" href="/updating-dependencies-npm"><span>Updating Dependencies (npm)</span></a></article><article is="note-link"><a class="variant-1" href="/a-rendering-bug-in-safari"><span>A Rendering Bug in Safari</span></a></article><article is="note-link"><a class="variant-2" href="/array-bouncing-generator"><span>Array Bouncing Generator</span></a></article><article is="note-link"><a class="variant-3" href="/for-in-or-for-of"><span>For...in or For...of</span></a></article><article is="note-link"><a class="variant-4" href="/minify-javascript-with-esbuild"><span>Minify JavaScript with esbuild</span></a></article><article is="note-link"><a class="variant-5" href="/intro-to-toast"><span>Intro to Toast</span></a></article><article is="note-link"><a class="variant-4" href="/a-post"><span>A Post</span></a></article></div></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

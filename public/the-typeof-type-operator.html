@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/the-typeof-type-operator.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/the-typeof-type-operator.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">The `typeof` Type Operator 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="the-typeof-type-operator" is="postHeading">The <code>typeof</code> Type Operator</h1><p>This is part 2 of my notes from working through the <a href="https://www.typescriptlang.org/play?#gist/927ccc66ae3022dc64c4f650109b937a-1"><em>Beginner 1</em> exercise from TypeScript's <em>Type | Treat 2021</em></a>. <a href="/literal-types-and-as-const">Part 1 can be found here</a></p><h2 id="typeof" is="postHeading"><a href="#typeof"><code>typeof</code></a></h2><p><a href="https://www.typescriptlang.org/docs/handbook/2/typeof-types.html">TypeScript's <code>typeof</code> operator</a> can be used in a <em>type context</em> to refer to the type of a variable or property. It's a complement to JavaScript's <code>typeof</code> operator, which works similarly but in an <em>expression context</em>.</p><p>Use <code>typeof</code> to refer to the type of the provided value.</p><h2 id="type-index-syntax" is="postHeading"><a href="#type-index-syntax">Type Index Syntax</a></h2><p>When using <a href="https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html">Indexed Access Types</a>, there's a convenient helper for capturing the type of an array's elements. It looks something like <code>typeof MyArray[number]</code>.</p><h2 id="all-together" is="postHeading"><a href="#all-together">All Together</a></h2><p>Putting all these features together gives us an approach to this problem. In short, the answer looks something like this:</p><div is="code" codestring="const MyArray = [\&quot;a\&quot;, \&quot;b\&quot;, \&quot;c\&quot;] as const;\n\ntype Letter = typeof MyArray[number];\n//   ^? type Letter = \&quot;a\&quot; | \&quot;b\&quot; | \&quot;c\&quot;" class="language-ts"><pre style="color: #d6deeb; background-color: transparent;" class="prism-code language-ts"><div style="color: #d6deeb;" class="token-line"><span style="color: rgb(127, 219, 202);" class="token keyword">const</span><span class="token plain"> MyArray </span><span style="color: rgb(127, 219, 202);" class="token operator">=</span><span class="token plain"> </span><span style="color: rgb(199, 146, 234);" class="token punctuation">[</span><span style="color: rgb(173, 219, 103);" class="token string">&quot;a&quot;</span><span style="color: rgb(199, 146, 234);" class="token punctuation">,</span><span class="token plain"> </span><span style="color: rgb(173, 219, 103);" class="token string">&quot;b&quot;</span><span style="color: rgb(199, 146, 234);" class="token punctuation">,</span><span class="token plain"> </span><span style="color: rgb(173, 219, 103);" class="token string">&quot;c&quot;</span><span style="color: rgb(199, 146, 234);" class="token punctuation">]</span><span class="token plain"> </span><span style="color: rgb(127, 219, 202);" class="token keyword">as</span><span class="token plain"> </span><span style="color: rgb(127, 219, 202);" class="token keyword">const</span><span style="color: rgb(199, 146, 234);" class="token punctuation">;</span><span class="token plain"></span></div><div style="color: #d6deeb;" class="token-line"><span style="display: inline-block;" class="token plain">
+</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain"></span><span style="color: rgb(127, 219, 202);" class="token keyword">type</span><span class="token plain"> </span><span style="color: rgb(255, 203, 139);" class="token class-name">Letter</span><span class="token plain"> </span><span style="color: rgb(127, 219, 202);" class="token operator">=</span><span class="token plain"> </span><span style="color: rgb(127, 219, 202);" class="token keyword">typeof</span><span class="token plain"> MyArray</span><span style="color: rgb(199, 146, 234);" class="token punctuation">[</span><span style="color: rgb(130, 170, 255);" class="token builtin">number</span><span style="color: rgb(199, 146, 234);" class="token punctuation">]</span><span style="color: rgb(199, 146, 234);" class="token punctuation">;</span><span class="token plain"></span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain"></span><span style="color: rgb(99, 119, 119); font-style: italic;" class="token comment">//   ^? type Letter = &quot;a&quot; | &quot;b&quot; | &quot;c&quot;</span></div></pre></div><p><a href="https://www.typescriptlang.org/play?ssl=4&amp;ssc=8&amp;pln=1&amp;pc=1#code/MYewdgzgLgBAsgTwIICcUEMEwLwwNowDk6hANEQEZlHCEwC6M6EMokUA3AFBdQIAOAUxgAZQVCiCUOGHyEgAZvGRpMeMAFcAthSn1uAegMwTAPQD8XIA">Playground link</a></p></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

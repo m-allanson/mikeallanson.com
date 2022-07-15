@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/node-and-esm-module-resolution.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/node-and-esm-module-resolution.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">Node and ESM module resolution 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="node-and-esm-module-resolution" is="postHeading">Node and ESM module resolution</h1><h2 id="the-short-version" is="postHeading"><a href="#the-short-version">The short version</a></h2><ul><li>Include a <code>&quot;type&quot;: &quot;module&quot;</code> in the <code>package.json</code> for the imported module.</li></ul><p>OR</p><ul><li>Set the file extension of the imported module to <code>.mjs</code>.</li></ul><h2 id="the-longer-version" is="postHeading"><a href="#the-longer-version">The longer version</a></h2><p>I was a bit confused about this, so created a repo to shore up my understanding: <a href="https://github.com/m-allanson/node-esm-resolution">github.com/m-allanson/node-esm-resolution</a>.</p><p>If you're writing a package and want to export CommonJS and ESM versions, here's <a href="https://2ality.com/2019/10/hybrid-npm-packages.html">a good overview by Dr. Axel Rauschmayer</a>.</p><p>And <a href="https://nodejs.org/api/packages.html#packages_dual_commonjs_es_module_packages">some further information, including potential pitfalls of dual-format packages in Node's docs</a>.</p></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/five-year-frontend.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/five-year-frontend.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">Five Year Frontend 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="five-year-frontend" is="postHeading">Five Year Frontend</h1><p>How do you design a web app for the following constraints:</p><p>The app is based around a multiple choice survey. User responses are stored for later analysis. The app will get significant traffic around certain real-world events. It may be several years between events, where the app will get relatively low traffic. The app will be open source, with contributions encouraged. There is limited budget and developer time to maintain the app between events.</p><p>In summary:</p><ul><li>Built for the long term</li><li>Traffic volume will vary significantly</li><li>Maintenance should be simple</li><li>Contributor friendly where possible</li></ul><h2 id="some-thoughts" is="postHeading"><a href="#some-thoughts">Some thoughts</a></h2><p>I'm not going to think about the backend for now, here's some musings on the frontend.</p><p><em>Variable traffic volumes</em> is basically a perfect usecase for serverless. Most of the time the app will have relatively low traffic, leading to lower costs.</p><p>One route to <em>simple maintenance</em> is to have less code. Less code = less things that can break. This includes dependencies. Node.js projects in particular are notorious for having many dependencies that require regular updating. Build 'only' the simplest thing that works (easier said than done).</p><p>Tools that help with automated updates can help with this (e.g. dependabot) - regular small updates are easier to manage than rare massive updates.</p><p>Choose dependencies that are easily replaceable?</p><p>To be <em>contributor friendly</em> lean towards more populist tech choices, to maximise the pool of potential volunteers. And use automation where possible - Tests, deployments, dependency updates. Shorten the path from 'code is written' to 'code is deployed'.</p><h3 id="frontend-tech-options" is="postHeading"><a href="#frontend-tech-options">Frontend tech options</a></h3><p>Could you use plain HTML and non-library JavaScript? Beware writing your own undocumented, unmaintained one-off framework.</p><p>Web Components? It's the platform. Likely to be supported for a long time. What browser support is required? Can polyfill. What's the story on state management and routing? Would adding <code>lit</code> make Web Components easier to work with?</p><p>React has a good history of non-breaking changes. Backed by Facebook, likely to be around for the long term. Generally requires build tooling. Vibrant ecosystem allows choices but can result in more dependencies.</p><p>Vue can be used without tooling. Generally seen as more beginner friendly than React. Has a more integrated ecosystem (official routing, state management, test utils) which may make for smoother upgrades. Easier to go 'no build tool' (which means less dependencies) compared to React?</p><p>Preact mixes some of the upsides of Vue - easier buildless approach, an 'official' routing lib with some of the upsides of React - well known API, huge ecosystem.</p><p>Svelte / Sapper - Sapper under early development. Svelte maybe too niche to be volunteer friendly? Particularly if the app is not aimed at a developer audience. Similar to React in that you will stitch together your custom set of dependencies.</p><p>Use plain CSS for styling. CSS never goes out of style (😩😅).</p><h2 id="prototyping" is="postHeading"><a href="#prototyping">Prototyping</a></h2><p>How to approach it? Explore the problem with plain HTML and JavaScript, document any roadblocks and then look towards Vue? What tech are the dev team experienced with? That should weigh into the decision too.</p><p>Is the data <em>write rarely, read often</em>? Can you create a 'static' API? Embed JSON files into the frontend. That pushes more work to the CDN and means backend costs are incurred more rarely.</p><p>Ensure frontend is not chatty with backend - get initial data, then manage as much as possible in the client. Only communicating with the backend when absolutely necessary.</p><h2 id="conclusion" is="postHeading"><a href="#conclusion">Conclusion</a></h2><p>There's no real conclusion here. These are some of the things I'd think about if I were working on a project like this.</p></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

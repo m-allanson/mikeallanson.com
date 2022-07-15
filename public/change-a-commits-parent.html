@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/change-a-commits-parent.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/change-a-commits-parent.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">Change a commit&#x27;s parent 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="change-a-commits-parent" is="postHeading">Change a commit's parent</h1><p>Occasionally I want to move some commits from one branch to another. I do this rarely enough that I forget how to do it each time, but often enough that I know I'll need to do it again.</p><p>There are some detailed Stack Overflow answers that dig into different ways to do it. But I find them tricky to understand and follow, mainly because I <em>know</em> this is something I've done in the past without much fuss.</p><p>Here it is:</p><div is="code" codestring="git rebase --onto &lt;new-parent-ref&gt; &lt;old-parent-ref&gt; &lt;target-branch-ref&gt;" class="language-sh"><pre style="color: #d6deeb; background-color: transparent;" class="prism-code language-sh"><div style="color: #d6deeb;" class="token-line"><span class="token plain">git rebase --onto &lt;new-parent-ref&gt; &lt;old-parent-ref&gt; &lt;target-branch-ref&gt;</span></div></pre></div><p>If you skip the third argument, the current <code>HEAD</code> is used instead.</p><p>There are some great examples in the <a href="https://git-scm.com/docs/git-rebase">git docs</a>.</p><p>Here's an example from the docs that covers my most common use-case. With branches like:</p><div is="code" codestring="o---o---o---o---o  main\n         \\\n          o---o---o---o---o  next\n                           \\\n                            o---o---o  topic"><pre style="color: #d6deeb; background-color: transparent;" class="prism-code language-undefined"><div style="color: #d6deeb;" class="token-line"><span class="token plain">o---o---o---o---o  main</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">         \</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">          o---o---o---o---o  next</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">                           \</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">                            o---o---o  topic</span></div></pre></div><p>And a desired layout of:</p><div is="code" codestring="o---o---o---o---o  main\n        |            \\\n        |             o'--o'--o'  topic\n         \\\n          o---o---o---o---o  next"><pre style="color: #d6deeb; background-color: transparent;" class="prism-code language-undefined"><div style="color: #d6deeb;" class="token-line"><span class="token plain">o---o---o---o---o  main</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">        |            \</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">        |             o'--o'--o'  topic</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">         \</span></div><div style="color: #d6deeb;" class="token-line"><span class="token plain">          o---o---o---o---o  next</span></div></pre></div><p>You can use the following command:</p><div is="code" codestring="git rebase --onto main next topic"><pre style="color: #d6deeb; background-color: transparent;" class="prism-code language-undefined"><div style="color: #d6deeb;" class="token-line"><span class="token plain">git rebase --onto main next topic</span></div></pre></div><p>Note that the refs can be commit hashes as well as branch names (does this apply to <code>&lt;target-branch-ref&gt;</code>?).</p><p>Thanks git!</p></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>

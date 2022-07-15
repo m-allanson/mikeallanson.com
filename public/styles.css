@@ -1,0 +1,719 @@
+/**
+ * Reset
+ * Adapted from https://github.com/hankchizljaw/modern-css-reset
+ */
+/* stylelint-disable */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: calc(1em + 0.5rem);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* stylelint-enable */
+
+/**
+ * Fonts
+ */
+
+@font-face {
+  font-display: swap;
+  font-family: "Plex Serif";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/ibm-plex-serif-v9-latin-700.woff2") format("woff2");
+}
+
+/**
+ * Root
+ */
+
+:root {
+  --font-display: "Plex Serif", Georgia, Times, serif;
+  --font-body: system-ui, sans-serif;
+  --font-mono: "Plex Mono", Monaco, "Lucida Console", monospace;
+
+  /* @link https://utopia.fyi/type/calculator?c=320,21,1.067,1140,24,1.2,6,8,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+  --step--8: clamp(0.35rem, calc(0.95rem + -0.84vw), 0.78rem);
+  --step--7: clamp(0.42rem, calc(1rem + -0.81vw), 0.83rem);
+  --step--6: clamp(0.5rem, calc(1.04rem + -0.75vw), 0.89rem);
+  --step--5: clamp(0.6rem, calc(1.08rem + -0.67vw), 0.95rem);
+  --step--4: clamp(0.72rem, calc(1.13rem + -0.56vw), 1.01rem);
+  --step--3: clamp(0.87rem, calc(1.16rem + -0.41vw), 1.08rem);
+  --step--2: clamp(1.04rem, calc(1.2rem + -0.22vw), 1.15rem);
+  --step--1: clamp(1.25rem, calc(1.22rem + 0.04vw), 1.23rem);
+  --step-0: clamp(1.31rem, calc(1.24rem + 0.37vw), 1.5rem);
+  --step-1: clamp(1.4rem, calc(1.24rem + 0.78vw), 1.8rem);
+  --step-2: clamp(1.49rem, calc(1.23rem + 1.3vw), 2.16rem);
+  --step-3: clamp(1.59rem, calc(1.21rem + 1.95vw), 2.59rem);
+  --step-4: clamp(1.7rem, calc(1.15rem + 2.75vw), 3.11rem);
+  --step-5: clamp(1.82rem, calc(1.07rem + 3.74vw), 3.73rem);
+  --step-6: clamp(1.94rem, calc(0.94rem + 4.96vw), 4.48rem);
+
+  /* Colours from Tailwind, converted to hsl values. See scripts/colours.js */
+  --black: 0 0% 0%;
+  --white: 0 0% 100%;
+  --pink-50: 327 73.3% 97.1%;
+  --pink-100: 326 77.8% 94.7%;
+  --pink-200: 326 84.6% 89.8%;
+  --pink-300: 327 87.1% 81.8%;
+  --pink-400: 329 85.5% 70.2%;
+  --pink-500: 330 81.2% 60.4%;
+  --pink-600: 333 71.4% 50.6%;
+  --pink-700: 335 77.6% 42%;
+  --pink-800: 336 74.4% 35.3%;
+  --pink-900: 336 69% 30.4%;
+  --purple-50: 270 100% 98%;
+  --purple-100: 269 100% 95.5%;
+  --purple-200: 269 100% 91.8%;
+  --purple-300: 269 97.4% 85.1%;
+  --purple-400: 270 95.2% 75.3%;
+  --purple-500: 271 91% 65.1%;
+  --purple-600: 271 81.3% 55.9%;
+  --purple-700: 272 71.7% 47.1%;
+  --purple-800: 273 67.2% 39.4%;
+  --purple-900: 274 65.6% 32%;
+  --yellow-50: 55 91.7% 95.3%;
+  --yellow-100: 55 96.7% 88%;
+  --yellow-200: 53 98.3% 76.9%;
+  --yellow-300: 50 97.8% 63.5%;
+  --yellow-400: 48 95.8% 53.1%;
+  --yellow-500: 45 93.4% 47.5%;
+  --yellow-600: 41 96.1% 40.4%;
+  --yellow-700: 35 91.7% 32.9%;
+  --yellow-800: 32 81% 28.8%;
+  --yellow-900: 28 72.5% 25.7%;
+  --blue-gray-50: 210 40% 98%;
+  --blue-gray-100: 210 40% 96.1%;
+  --blue-gray-200: 214 31.8% 91.4%;
+  --blue-gray-300: 213 26.8% 83.9%;
+  --blue-gray-400: 215 20.2% 65.1%;
+  --blue-gray-500: 215 16.3% 46.9%;
+  --blue-gray-600: 215 19.3% 34.5%;
+  --blue-gray-700: 215 25% 26.7%;
+  --blue-gray-800: 217 32.6% 17.5%;
+  --blue-gray-900: 222 47.4% 11.2%;
+
+  /**
+    Not tailwind colours
+  */
+  /* util */
+  --margin-pull: calc(50% - 50vw);
+
+  /* text colours */
+  --text: var(--blue-gray-800);
+  --text-inverse: var(--blue-gray-50);
+  --text-display: var(--blue-gray-900);
+  --text-secondary: var(--blue-gray-500);
+
+  /* element and 'brand' colours */
+  --background: var(--blue-gray-50);
+  --background-inverse: var(--blue-gray-700);
+  --sunken: var(--blue-gray-100);
+  --drop: var(--blue-gray-200);
+  --accent: var(--yellow-100);
+  --accent-drop: var(--yellow-800);
+  --accent-inset: var(--yellow-300);
+  --separator: var(--blue-gray-700);
+  --banner-highlight: var(--pink-400);
+  --banner-underline: var(--purple-700);
+
+  /* state colours */
+  --active: var(--blue-gray-900);
+  --focus: var(--pink-300);
+  --focus-link: var(--blue-gray-900);
+  --focus-visited: var(--blue-gray-600);
+  --visited: var(--blue-gray-600);
+  --selection: var(--blue-gray-700);
+  --on-selection: var(--blue-gray-100);
+
+  /* variant colours on index page */
+  --variant-1-bg: var(--blue-gray-900);
+  --variant-2-bg: var(--blue-gray-800);
+  --variant-3-bg: var(--blue-gray-700);
+  --variant-4-bg: var(--blue-gray-600);
+  --variant-5-bg: var(--blue-gray-500);
+}
+
+/*
+  @media (prefers-color-scheme: light) {}
+
+  @media (prefers-color-scheme: dark) {}
+*/
+
+/**
+ * Base
+ */
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+body {
+  background-color: hsl(var(--background, var(--blue-gray-50)));
+  color: hsl(var(--text));
+  color-scheme: light dark;
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+}
+
+/**
+ * Links
+ */
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+a:not([class]) {
+  color: currentColor;
+}
+
+:focus {
+  background-color: hsl(var(--focus));
+  outline: none;
+  outline: 2px dashed;
+}
+
+main:focus {
+  outline: none;
+}
+
+[href]:hover {
+  text-decoration: none;
+}
+
+::-moz-selection {
+  background-color: hsl(var(--selection));
+  color: hsl(var(--on-selection));
+}
+
+::selection {
+  background-color: hsl(var(--selection));
+  color: hsl(var(--on-selection));
+}
+
+/**
+ * Headings
+ */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
+
+h1,
+h2 {
+  font-weight: 900;
+}
+
+h1 {
+  font-size: var(--step-3);
+  margin-top: 2rem;
+}
+
+h2 {
+  font-size: var(--step-1);
+}
+
+h3 {
+  font-size: var(--step-0);
+}
+
+img {
+  /* stylelint-disable-next-line property-disallowed-list */
+  max-width: min(55rem, 100%);
+}
+
+figcaption {
+  font-size: var(--step-0);
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+blockquote {
+  /* display: flex; */
+  border-left: 4px solid;
+  font-size: var(--step-0);
+  font-style: italic;
+  font-weight: 300;
+  max-width: 50ch;
+  padding-top: var(--step--5);
+  padding-bottom: var(--step--5);
+  padding-left: var(--step--5);
+}
+/*
+blockquote::before {
+  font-size: var(--step-5);
+  font-weight: 500;
+  content: open-quote;
+  color: hsl(var(--blue-gray-300));
+  font-family: var(--font-display);
+  padding-inline-end: var(--step--5);
+}
+
+blockquote p:last-child::after {
+  content: close-quote;
+  font-family: var(--font-display);
+  color: hsl(var(--blue-gray-300));
+} */
+
+/**
+ * Specifics
+ */
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+p,
+li {
+  max-width: 55ch;
+}
+
+h1,
+h2,
+h3 {
+  max-width: 30ch;
+}
+
+/* Dark mode toggle */
+
+/* dark-mode-toggle {
+  --dark-mode-toggle-label: hsl(var(--toggle-label));
+  --dark-mode-toggle-track: hsl(var(--toggle-track));
+  --dark-mode-toggle-thumb: hsl(var(--toggle-thumb));
+  --dark-mode-toggle-focus: hsl(var(--focus));
+} */
+
+/* Header */
+
+header[role="banner"] > a {
+    background-color: transparent;
+    color: hsl(var(--blue-gray-600));
+    display: inline-block;
+    font-size: var(--step-1);
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    padding: 1rem;
+    text-decoration: none;
+    text-transform: uppercase
+  }
+
+header[role="banner"] > a:hover {
+      background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" id="wiggle"><style>.a{opacity:0.5; color: hsl(272 71.7% 47.1%);}</style><path fill="none" stroke="currentColor" d="M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3" class="a"/></svg>');
+      background-position-y: 5px;
+      background-size: 20px 4px;
+      color: hsl(var(--banner-highlight));
+      text-decoration: none;
+      text-shadow: -1px 0 1px hsl(var(--white)), 1px 0 1px hsl(var(--white)),
+        0 1px 1px hsl(var(--white)), 0 -1px 1px hsl(var(--white))
+    }
+
+@media (prefers-reduced-motion: no-preference) {
+
+header[role="banner"] > a:hover {
+        /* Add wiggles to the squiggles. Thank you https://www.news47ell.com/articles/use-svg-css-instead-text-decoration-underline/ */
+        background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" id="wiggle"><style>.a{opacity:0.5; color: hsl(272 71.7% 47.1%); animation:shift 4s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}</style><path fill="none" stroke="currentColor" d="M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3" class="a"/></svg>')
+    }
+      }
+
+header[role="banner"] > a:focus {
+      background-color: hsl(var(--focus));
+      box-shadow: none;
+    }
+
+div[is="notes"] {
+  margin-left: var(--margin-pull)
+}
+
+div[is="notes"] > h1 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+div[is="notes"] > article > a {
+    color: currentColor;
+    display: block;
+    font-size: var(--step-1);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    transition: background-color 3s ease, color 3s ease
+  }
+
+div[is="notes"] > article > a:hover,
+    div[is="notes"] > article > a:focus {
+      color: hsl(var(--text-inverse));
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+div[is="notes"] > article > a.variant-1:hover,
+    div[is="notes"] > article > a.variant-1:focus {
+      background-color: hsl(var(--variant-1-bg));
+    }
+
+div[is="notes"] > article > a.variant-2:hover,
+    div[is="notes"] > article > a.variant-2:focus {
+      background-color: hsl(var(--variant-2-bg));
+    }
+
+div[is="notes"] > article > a.variant-3:hover,
+    div[is="notes"] > article > a.variant-3:focus {
+      background-color: hsl(var(--variant-3-bg));
+    }
+
+div[is="notes"] > article > a.variant-4:hover,
+    div[is="notes"] > article > a.variant-4:focus {
+      background-color: hsl(var(--variant-4-bg));
+    }
+
+div[is="notes"] > article > a.variant-5:hover,
+    div[is="notes"] > article > a.variant-5:focus {
+      background-color: hsl(var(--variant-5-bg));
+    }
+
+article[is="post"] {
+  max-width: 90vw;
+  max-width: clamp(16rem, 90vw, 70rem);
+  padding-right: 1rem;
+  padding-left: 1rem
+}
+
+article[is="post"] > time {
+    --flow-space: var(--step--6);
+
+    display: block;
+  }
+
+article[is="post"] > :is(h1, h2, h3) {
+    --flow-space: var(--step-5)
+  }
+
+article[is="post"] > :is(h1, h2, h3) + * {
+      --flow-space: var(--step--6);
+    }
+
+article[is="post"] > figure,
+  article[is="post"] > figure + * {
+    --flow-space: var(--step-5);
+  }
+
+/* Code blocks */
+
+div[is="code"] {
+  /* TODO: prism theme that works on a light bg */
+  background-color: hsl(var(--background-inverse));
+  border-top: 0.1rem solid hsl(var(--drop));
+  border-bottom: 0.1rem solid hsl(var(--drop));
+  font-size: var(--step--2);
+  margin-left: -1rem;
+  overflow-x: scroll;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  /* stylelint-disable-next-line property-disallowed-list */
+  width: 100vw;
+}
+
+[is="postHeading"] {
+  color: hsl(var(--text))
+}
+
+[is="postHeading"] > a {
+    text-decoration: none
+  }
+
+[is="postHeading"] > a:hover,
+    [is="postHeading"] > a:focus {
+      text-decoration: underline;
+    }
+
+[is="mainFooter"] {
+  background-color: hsl(var(--blue-gray-800));
+  color: hsl(var(--blue-gray-100));
+  display: flex;
+  font-size: var(--step--2);
+  justify-content: flex-end;
+  margin-top: var(--step-4);
+  padding: 1rem;
+}
+
+code {
+  background-color: hsl(var(--blue-gray-200));
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Skip */
+
+/* There's nothing to skip yet */
+
+/* a[is="skip"] {
+  color: hsl(var(--on-focus));
+  display: block;
+  inset-inline-start: -100vw;
+  padding: 0.5rem 2rem;
+  position: absolute;
+  text-align: center;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    background-color: hsl(var(--focus));
+    inset-inline: 0;
+    z-index: 3;
+  }
+} */
+
+/*
+main {
+  margin-block-end: 3rem;
+  margin-inline: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: hsl(var(--text-display));
+  font-family: var(--font-display);
+}
+
+h1,
+h2 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--step-4);
+  margin-block-end: 0.28em;
+}
+
+h2 {
+  font-size: var(--step-3);
+  margin-block-end: 0.48em;
+}
+
+h3 {
+  font-size: var(--step-2);
+  margin-block-end: 0.58em;
+}
+
+h4 {
+  font-size: var(--step-1);
+  margin-block-end: 0.83em;
+}
+
+h5 {
+  font-size: var(--step-0);
+  margin-block-end: 1em;
+}
+
+h6 {
+  font-size: var(--step--1);
+  margin-block-end: 1.5em;
+}
+
+cite,
+dd,
+dt,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+li,
+p {
+  max-inline-size: 32em;
+}
+
+address,
+dd,
+dt,
+h3,
+h4,
+h5,
+h6,
+li,
+p,
+td,
+th {
+  line-height: 1.5;
+}
+
+p,
+li,
+pre {
+  font-size: var(--step--1);
+}
+
+blockquote,
+figure {
+  margin-inline: 2rem;
+}
+
+dd {
+  margin-inline-start: 2rem;
+}
+
+ol,
+ul {
+  padding-inline-start: 2rem;
+}
+
+figcaption {
+  margin-block: 0.48em;
+}
+
+sub,
+sup {
+  line-height: 1;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+hr {
+  border-style: solid;
+  color: hsl(var(--separator));
+  margin-inline: 0;
+}
+
+iframe,
+img,
+svg,
+video {
+  display: block;
+  max-inline-size: 100%;
+}
+
+img {
+  block-size: auto;
+  filter: grayscale(1);
+}
+
+a,
+button,
+summary {
+  cursor: pointer;
+
+  &:focus {
+    background-color: hsl(var(--focus));
+    outline: none;
+  }
+}
+
+a,
+summary {
+  &:focus {
+    box-shadow: 0px 0px 0px 4px hsl(var(--focus));
+    color: hsl(var(--on-focus));
+  }
+}
+
+a {
+  color: hsl(var(--text));
+
+  &:focus {
+    color: hsl(var(--focus-link));
+  }
+
+  &:visited {
+    color: hsl(var(--visited));
+    text-decoration-line: dashed;
+
+    &:focus {
+      color: hsl(var(--focus-visited));
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    color: hsl(var(--active));
+
+    &:focus {
+      color: hsl(var(--active));
+    }
+  }
+}
+*/

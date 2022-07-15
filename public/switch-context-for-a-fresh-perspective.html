@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<script>
+window.componentPath = "/switch-context-for-a-fresh-perspective.js";
+window.wrapperComponentPath = "/src/page-wrapper.js";
+window.dataPath = "/switch-context-for-a-fresh-perspective.json";
+</script>
+<html lang="en">
+  <head>
+  <title data-react-helmet="true">Switch Context for a Fresh Perspective 🪲 mikeallanson.com</title>
+  <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="TODO!! Here is my lovely placeholder description"/>
+  <link data-react-helmet="true" type="font/woff2" href="fonts/ibm-plex-serif-v9-latin-700.woff2" rel="preload" as="font" crossorigin="anonymous"/><link data-react-helmet="true" rel="stylesheet" href="/styles.css"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🪲&lt;/text&gt;&lt;/svg&gt;"/><link data-react-helmet="true" rel="alternate icon" href="/favicon.ico"/>
+  
+  
+  </head>
+  <body >
+    <div id="toast-page-section"><header role="banner"><a href="/" aria-label="Mike Allanson">Mike Allanson</a></header><main><article is="post" class="flow"><h1 id="switch-context-for-a-fresh-perspective" is="postHeading">Switch Context for a Fresh Perspective</h1><p>I noticed a useful pattern I use for reviewing my own work. I was surprised to find that not <em>everyone</em> does this already. Though I'm sure I had to learn it somehow, I don't remember when it became a thing that I do.</p><p>I find reviewing my own work to be critical for catching 'obvious' errors. But sometimes it's difficult because I'm so wrapped up in the thing I've just written. I'm too close to spot those obvious flaws.</p><h2 id="create-some-distance" is="postHeading"><a href="#create-some-distance">Create some distance</a></h2><p>A context change creates some distance, allowing those obvious mistakes to leap out. I use it when writing prose or code, but the general idea can apply to any type of creation.</p><h2 id="some-examples" is="postHeading"><a href="#some-examples">Some examples</a></h2><h3 id="open-the-file-in-a-different-program" is="postHeading"><a href="#open-the-file-in-a-different-program">Open the file in a different program</a></h3><p>I usually write code in VS Code, then use Sublime Merge to review my work, bit by bit. Often switching back and forth between them. Reviewing your own pull request on GitHub is another way to do this.</p><p>I think this works because the layout is changed in various ways (fonts, spacing, sizing, colours etc), forcing me to pay closer attention.</p><h3 id="print-it-out" is="postHeading"><a href="#print-it-out">Print it out</a></h3><p>This is an example of changing the medium. Putting your work onto a physical piece of paper is another way to change the layout. Grab a pen, and move to a different room (or better, outside) to review the work.</p><h3 id="read-it-out-loud" is="postHeading"><a href="#read-it-out-loud">Read it out loud</a></h3><p>This works better for prose than code. It's another example where changing the medium results in seeing (or hearing) your work in a different way.</p><h3 id="sleep-on-it" is="postHeading"><a href="#sleep-on-it">Sleep on it</a></h3><p>Use time and rest to create distance from your work. I often spot glaring mistakes after a good night's sleep. An alternative is to go for a walk.</p><h2 id="the-freshest-perspective" is="postHeading"><a href="#the-freshest-perspective">The freshest perspective</a></h2><p>The freshest perspective is asking someone else to review your work.</p><p>I self-review before asking someone else to review my work. The aim is to remove the 'obvious' problems, allowing my reviewer to focus on more nuanced advice.</p><p>Note this mainly applies to things I consider finished. If something is a work-in-progress, and I want advice, I'm probably asking about one specific aspect. I don't worry about tidying everything else up to 100%.</p><h2 id="variations" is="postHeading"><a href="#variations">Variations</a></h2><p>After noticing this pattern, I've spotted variations all over the place. One example is the idea of flipping a coin when you're torn between two choices. After flipping the coin, you can tell whether you're happy with the coin's decision.</p><p>The result of the coin-flip puts you in the context of someone who's made the decision, and lets you evaluate your choice from that perspective.</p></article></main><footer is="mainFooter"><a href="https://github.com/m-allanson/mikeallanson.com">Source available on GitHub</a></footer></div>
+    <script type="module">
+    /* @jsx jsx */
+
+async function renderPage() {
+  const promises = [
+    import(window.componentPath),
+    window.wrapperComponentPath
+      ? import(window.wrapperComponentPath)
+      : undefined,
+    window.dataPath
+      ? fetch(window.dataPath).then(response => {
+          return response.json();
+        })
+      : {},
+    import("/web_modules/preact.js")
+  ];
+
+  let pageWrapper = ({ children }) => h("div", null, children);
+  const [
+    PageModule,
+    PageWrapperModule,
+    pageData,
+    { render, h }
+  ] = await Promise.all(promises);
+  const Page = PageModule.default;
+  if(PageWrapperModule) {
+    pageWrapper = PageWrapperModule.default
+  }
+
+  render(
+    h(pageWrapper, pageData, h(Page, pageData)),
+    document.getElementById("toast-page-section")
+  );
+}
+
+renderPage();
+
+</script>
+  </body>
+</html>
