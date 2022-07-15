@@ -2,6 +2,7 @@ const fs = require("fs");
 
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const { asidePlugin } = require("@humanwhocodes/markdown-it-markua-aside");
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -9,8 +10,12 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const filterTagList = require("./filters/filterTagList");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/assets/fonts");
-  eleventyConfig.addPassthroughCopy("src/assets/images");
+  eleventyConfig.addPassthroughCopy(
+    "src/css/prism-night-owl-light-no-italics.css"
+  );
+  eleventyConfig.addPassthroughCopy("src/css/prism-night-owl-no-italics.css");
+  eleventyConfig.addPassthroughCopy("src/fonts");
+  eleventyConfig.addPassthroughCopy("src/images");
 
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
@@ -38,15 +43,21 @@ module.exports = function (eleventyConfig) {
   let markdownLibrary = markdownIt({
     html: true,
     linkify: true,
-  }).use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: "after",
-      class: "direct-link",
-      symbol: "#",
-    }),
-    level: [1, 2, 3, 4],
-    slugify: eleventyConfig.getFilter("slugify"),
-  });
+
+    // Enable some language-neutral replacement + quotes beautification
+    // For the full list of replacements, see https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/replacements.js
+    typographer: true,
+
+    // Double + single quotes replacement pairs, when typographer enabled,
+    // and smartquotes on. Could be either a String or an Array.
+    quotes: "“”‘’",
+  })
+    .use(markdownItAnchor, {
+      permalink: markdownItAnchor.permalink.headerLink(),
+      level: [1, 2, 3, 4],
+      slugify: eleventyConfig.getFilter("slugify"),
+    })
+    .use(asidePlugin);
   eleventyConfig.setLibrary("md", markdownLibrary);
 
   // Override Browsersync defaults (used only with --serve)

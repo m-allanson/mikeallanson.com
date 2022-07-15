@@ -10,7 +10,32 @@ This version of the site is built with [eleventy](https://github.com/11ty/eleven
 
 Forked from: https://github.com/11ty/eleventy-base-blog
 
-Architecture from: https://glitch.com/edit/#!/build-excellent-websites project. See https://buildexcellentwebsit.es/ for more info on the principals behind it.
+Architecture from: https://glitch.com/edit/#!/build-excellent-websites project. See https://buildexcellentwebsit.es/ for more info on the principals behind it. Or watch the talk: https://heypresents.com/talks/be-the-browser-s-mentor-not-its-micromanager
+
+## Todo
+
+Rough todo notes. I might or might not do any of these.
+
+- Check internal links. There's a couple at least that are broken
+- Check RSS / reader view
+- Dark mode
+- Enable CSS Nano
+- Lighthouse checks
+- A11y review
+- Add CSP?
+- ~~Fiddle with fonts~~ Enough for now. Not sure if I've made it better or worse.
+- ~~Notes not posts~~
+- ~~Quote block styles~~ Good enough for now
+- ~~Page titles~~
+- ~~Add link to GitHub~~
+- ~~Add footer~~
+- ~~Redirects for old pages?~~
+- ~~Choose colours instead of using the defaults~~
+- ~~Check email works~~
+
+Original 11ty/eleventy-base-blog README follows...
+
+---
 
 ## Getting Started
 

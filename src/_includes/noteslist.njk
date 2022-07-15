@@ -1,0 +1,12 @@
+<ol reversed class="notelist" style="counter-reset: start-from {{ (noteslistCounter or noteslist.length) + 1 }}">
+{% for note in noteslist | reverse %}
+  <li class="notelist-item{% if note.url == url %} notelist-item-active{% endif %}">
+    <a href="{{ note.url | url }}" class="notelist-link">{% if note.data.title %}{{ note.data.title }}{% else %}<code>{{ note.url }}</code>{% endif %}</a>
+    <time class="notelist-date" datetime="{{ note.date | htmlDateString }}">{{ note.date | readableMonth }}</time>
+    {% for tag in note.data.tags | filterTagList %}
+      {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+      <a href="{{ tagUrl | url }}" class="note-tag">{{ tag }}</a>
+    {% endfor %}
+  </li>
+{% endfor %}
+</ol>

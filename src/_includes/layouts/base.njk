@@ -5,32 +5,58 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ description or metadata.description }}">
-    <link rel="stylesheet" href="/assets/css/global.css?{{ assetHash }}">
-    <link rel="stylesheet" href="{{ '/assets/css/prism-night-owl-no-italics.css' | url }}">
+    <title>{{ title or metadata.title }} | mikeallanson.com</title>
+    <link rel="stylesheet" href="/css/global.css?{{ assetHash }}">
+    <link rel="stylesheet" href="{{ '/css/prism-night-owl-no-italics.css' | url }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
-    <link rel="icon" href="/assets/images/favicon.ico" />
+    <link rel="icon" href="/images/favicon.ico" />
   </head>
   <body>
-    <header class="site-header">
-      <h1 class="logo"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
+    <div class="sticky-footer">
+      <header class="site-header">
+        <h1 class="logo"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
 
-      {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-      <ul class="nav text-right" role="list">
-      {%- for entry in collections.all | eleventyNavigation %}
-        <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
-      {%- endfor %}
-      </ul>
-    </header>
+        {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+        <ul class="nav text-right" role="list">
+        {%- for entry in collections.all | eleventyNavigation %}
+          <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
+        {%- endfor %}
+        </ul>
+      </header>
 
-    <main class="{% if templateClass %} {{ templateClass }} {% endif %} wrapper region">
-      {{ content | safe }}
-    </main>
+      <main class="{% if templateClass %}{{ templateClass }}{% endif %} region wrapper">
+        {{ content | safe }}
+      </main>
 
-    <footer></footer>
+      <footer class="site-footer" role="contentinfo">
+        <a href="{{ "/feed/feed.xml" | url }}" class="footer__icon" title="RSS Feed">
+          <span class="sr-only">RSS Feed</span>
+            {% include "icons/feed.svg" %}
+        </a>
+        <a href="{{ metadata.repo }}/tree/main/{{ page.inputPath }}" class="footer__icon" title="Edit this page on Github">
+          <span class="sr-only">Edit this page on Github</span>
+          {% include "icons/github.svg" %}
+        </a>
+      </footer>
+    </div>
 
     <!-- Current page: {{ page.url | url }} -->
+    <script type="module">
+      // TODO: move this out to a script?
+      let isCeiling = true;
+      window.addEventListener('wheel', (e) => {
+        console.log(e)
+          const delta = e.deltaY;
+          if (delta < 0 && !isCeiling) {
+              document.documentElement.style.background = 'var(--color-light)';
+              isCeiling = true;
+          } else if (delta > 0 && isCeiling) {
+              document.documentElement.style.background = 'var(--color-dark)';
+              isCeiling = false;
+          }
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,11 @@
+/**
+ * WRAPPER
+ * Sets a max width, adds a consistent gutter
+ * Info: https://piccalil.li/quick-tip/use-css-clamp-to-create-a-more-flexible-wrapper-utility/
+ */
+.wrapper {
+  max-width: var(--wrapper-max-width, 85rem);
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  position: relative;
+}

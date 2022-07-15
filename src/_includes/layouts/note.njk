@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-note
+---
+<article class="flow prose">
+  <h1>{{ title }}</h1>
+
+  <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableMonth }}</time>
+  {%- for tag in tags | filterTagList %}
+  {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+  <a href="{{ tagUrl | url }}" class="Note-tag">{{ tag }}</a>
+  {%- endfor %}
+
+  {{ content | safe }}
+</article>
+
+{%- if collections.notes %}
+{%- set nextNote = collections.notes | getNextCollectionItem(page) %}
+{%- set previousNote = collections.notes | getPreviousCollectionItem(page) %}
+{%- if nextNote or previousNote %}
+<div class="region" style="--region-space: var(--space-m-l)">
+  <hr class="hr">
+</div>
+<ul role="list" style="margin: 0"}>
+  {%- if nextNote %}<li>Next: <a href="{{ nextNote.url | url }}">{{ nextNote.data.title }}</a></li>{% endif %}
+  {%- if previousNote %}<li>Previous: <a href="{{ previousNote.url | url }}">{{ previousNote.data.title }}</a></li>{% endif %}
+</ul>
+{%- endif %}
+{%- endif %}
