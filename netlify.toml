@@ -1,3 +1,114 @@
 [build]
   publish = "dist"
   command = "npm run build"
+
+[[redirects]]
+  from = "/patch-sf-mono-with-nerd-font-icons"
+  to = "/notes/patch-sf-mono-with-nerd-font-icons"
+  status = 301
+
+[[redirects]]
+  from = "/import-export-from-photo-booth"
+  to = "/notes/import-export-from-photo-booth"
+  status = 301
+
+[[redirects]]
+  from = "/dev-setup-on-macos"
+  to = "/notes/dev-setup-on-macos"
+  status = 301
+
+[[redirects]]
+  from = "/the-typeof-type-operator"
+  to = "/notes/the-typeof-type-operator"
+  status = 301
+
+[[redirects]]
+  from = "/literal-types-and-as-const"
+  to = "/notes/literal-types-and-as-const"
+  status = 301
+
+[[redirects]]
+  from = "/yes-you-can-read-the-spec"
+  to = "/notes/yes-you-can-read-the-spec"
+  status = 301
+
+[[redirects]]
+  from = "/understanding-focus-in-the-browser"
+  to = "/notes/understanding-focus-in-the-browser"
+  status = 301
+
+[[redirects]]
+  from = "/switch-context-for-a-fresh-perspective"
+  to = "/notes/switch-context-for-a-fresh-perspective"
+  status = 301
+
+[[redirects]]
+  from = "/using-tailwinds-colours-without-the-tooling"
+  to = "/notes/using-tailwinds-colours-without-the-tooling"
+  status = 301
+
+[[redirects]]
+  from = "/change-a-commits-parent"
+  to = "/notes/change-a-commits-parent"
+  status = 301
+
+[[redirects]]
+  from = "/optimising-ci-runs"
+  to = "/notes/optimising-ci-runs"
+  status = 301
+
+[[redirects]]
+  from = "/loading-modules-in-the-browser"
+  to = "/notes/loading-modules-in-the-browser"
+  status = 301
+
+[[redirects]]
+  from = "/pseudo-components-for-css"
+  to = "/notes/pseudo-components-for-css"
+  status = 301
+
+[[redirects]]
+  from = "/five-year-frontend"
+  to = "/notes/five-year-frontend"
+  status = 301
+
+[[redirects]]
+  from = "/node-and-esm-module-resolution"
+  to = "/notes/node-and-esm-module-resolution"
+  status = 301
+
+[[redirects]]
+  from = "/updating-dependencies-npm"
+  to = "/notes/updating-dependencies-npm"
+  status = 301
+
+[[redirects]]
+  from = "/a-rendering-bug-in-safari"
+  to = "/notes/a-rendering-bug-in-safari"
+  status = 301
+
+[[redirects]]
+  from = "/array-bouncing-generator"
+  to = "/notes/array-bouncing-generator"
+  status = 301
+
+[[redirects]]
+  from = "/for-in-or-for-of"
+  to = "/notes/for-in-or-for-of"
+  status = 301
+
+[[redirects]]
+  from = "/minify-javascript-with-esbuild"
+  to = "/notes/minify-javascript-with-esbuild"
+  status = 301
+
+[[redirects]]
+  from = "/intro-to-toast"
+  to = "/notes/intro-to-toast"
+  status = 301
+
+[[redirects]]
+  from = "/a-post/"
+  to = "/notes/a-post"
+  status = 301
+
