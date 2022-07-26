@@ -8,9 +8,8 @@ I recently set up a macOS dev machine from scratch. This is my notes on the step
 ## First steps
 
 - Install [1Password](https://1password.com)
-- Install [Sublime Text](https://sublimetext.com)
-- Install [Sublime Merge](https://sublimemerge.com) (seeing as we're downloading ST anyway)
 - Install [homebrew](https://brew.sh)
+- Install [chezmoi](https://www.chezmoi.io) (`brew install chezmoi`)
 
 Homebrew takes a while to install. Tick through the System Preferences in the meantime.
 
@@ -85,25 +84,17 @@ defaults write com.apple.finder ShowStatusBar -bool true
 
 A> Credit to [taniarascia.com](https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/#defaults) for the system defaults settings.
 
-## Install apps
+## Init dotfiles
 
-```shell
-brew install \
-deno \
-firefox \
-git \
-google-chrome \
-gh \
-iterm2 \
-rectangle \
-slack \
-spotify  \
-starship \
-visual-studio-code \
-volta \
-jq \
-kubectl
+Chezmoi will install my dotfiles, and run [a 'one time' setup script](https://github.com/m-allanson/dotfiles/blob/main/run_once_install-packages.sh.tmpl) to install various tools and apps via homebrew.
+
 ```
+chezmoi init github.com/m-allanson/dotfiles --ssh
+```
+
+## Terminal
+
+I switched from iTerm2 to WezTerm. WezTerm has a text-based config which I can store as part of my dotfiles. [View the config here](https://github.com/m-allanson/dotfiles/blob/main/dot_wezterm.lua).
 
 ## Firefox
 
@@ -128,21 +119,6 @@ kubectl
 - Privacy Badger
 - uBlock origin
 
-## dotfiles
-
-Grab dotfiles from [m-allanson/dotfiles](https://github.com/m-allanson/dotfiles)
-
-## iterm2
-
-- Install a 'nerd font'. I'm using a patched SF Mono "SF Mono Nerd Font" ([instructions available here](/patch-sf-mono-with-nerd-font-icons)). ~~Maybe try Hack next time?~~ I tried Hack and preferred SF Mono.
-- Get iceberg theme from <https://iterm2colorschemes.com/>
-- Appearance -> Panes -> uncheck 'Show per-pane title bar with split panes'
-- Profiles -> General -> Working Directory -> Reuse previous session's directory
-- Profiles -> Terminal -> Set scrollback lines to unlimited
-- Profiles -> Text -> Font "SF Mono Nerd Font"
-- To enable text navigation with opt + arrow, and cmd + arrow
-  - Profiles -> Keys -> Key Mappings -> Presets -> Natural Text Editing
-
 ## VSCode
 
 - cocopon Iceberg Theme <https://cocopon.github.io/iceberg.vim/>
@@ -153,25 +129,18 @@ Grab dotfiles from [m-allanson/dotfiles](https://github.com/m-allanson/dotfiles)
 - Move side bar right
 - Disable minimap
 
-### VSCode plugins
-
--
+I've started using VSCode's settings sync to keep this in sync across different machines.
 
 ## Other apps
 
 - Docker (via Docker Desktop)
 - Tableplus
-- CoScreen
 - DevUtils
 - Gifox
 - Sync (sync.com)
 - Grand Perspective
 - ImageOptim
-- Multipass
-- Obsidian
-- Rectangle
 - VLC
-- WaveLink
 - Whatsapp
 - Zoom
 
@@ -182,8 +151,6 @@ Grab dotfiles from [m-allanson/dotfiles](https://github.com/m-allanson/dotfiles)
 - [Add Fastmail contacts and calendar](https://www.fastmail.help/hc/en-us/articles/1500000277682)
 - Configure backups
 
-## Node / JS
+## Node.js
 
-```shell
-volta install node
-```
+I use [Volta](https://volta.sh/) to manage different node / npm / yarn versions. It's installed as part of the chezmoi run once script.
