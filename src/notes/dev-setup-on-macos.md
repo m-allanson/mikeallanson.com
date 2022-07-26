@@ -60,37 +60,21 @@ Homebrew takes a while to install. Tick through the System Preferences in the me
 ### Spotlight
 
 - Categories
-  - Applications, Calculator, Conversion, Folders,
+  - Applications, Calculator, Conversion, Folders, System Preferences
 
 ### System Preferences
 
 - Set up Touch ID
 
-## System defaults
-
-```shell
-# Show Library folder
-chflags nohidden ~/Library
-
-# Show hidden files
-defaults write com.apple.finder AppleShowAllFiles YES
-
-# Show path bar
-defaults write com.apple.finder ShowPathbar -bool true
-
-# Show status bar
-defaults write com.apple.finder ShowStatusBar -bool true
-```
-
-A> Credit to [taniarascia.com](https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/#defaults) for the system defaults settings.
-
 ## Init dotfiles
 
-Chezmoi will install my dotfiles, and run [a 'one time' setup script](https://github.com/m-allanson/dotfiles/blob/main/run_once_install-packages.sh.tmpl) to install various tools and apps via homebrew.
+Chezmoi will install my dotfiles, and run [a 'one time' setup script](https://github.com/m-allanson/dotfiles/blob/main/run_once_install_packages.sh.tmpl) to install various tools and apps via homebrew.
 
 ```
 chezmoi init github.com/m-allanson/dotfiles --ssh
 ```
+
+Chezmoi will also [configure some system defaults](https://github.com/m-allanson/dotfiles/blob/main/run_once_system_defaults.sh.tmpl) using another one time setup script.
 
 ## Terminal
 
@@ -136,7 +120,7 @@ I've started using VSCode's settings sync to keep this in sync across different 
 - Docker (via Docker Desktop)
 - Tableplus
 - DevUtils
-- Gifox
+- CleanShot X
 - Sync (sync.com)
 - Grand Perspective
 - ImageOptim
@@ -153,4 +137,4 @@ I've started using VSCode's settings sync to keep this in sync across different 
 
 ## Node.js
 
-I use [Volta](https://volta.sh/) to manage different node / npm / yarn versions. It's installed as part of the chezmoi run once script.
+I use [Volta](https://volta.sh/) to manage different node / npm / yarn versions. It's installed as part of the Chezmoi run once script mentioned earlier.
