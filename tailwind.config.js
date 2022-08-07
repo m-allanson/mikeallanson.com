@@ -21,6 +21,7 @@ module.exports = {
     optimizeUniversalDefaults: true,
   },
   presets: [],
+  darkMode: "media", // tailwindcss-variables plugin
   theme: {
     screens: {
       md: "50em",
@@ -42,24 +43,37 @@ module.exports = {
       },
     },
     variables: {
+      // tailwindcss-variables plugin
       DEFAULT: {
         color: {
           primary: {
             DEFAULT: "#F3F3F3",
             glare: "#FFFFFF",
           },
-          secondary: "#404040",
+          secondary: {
+            DEFAULT: "#404040",
+            glare: "#525252",
+          },
           "highlight-primary": {
-            DEFAULT: "#EC4899",
-            glare: "#FCE7F3",
+            DEFAULT: "#FF707E",
+            glare: "#FF8591",
           },
           "highlight-secondary": {
-            DEFAULT: "#06B6D4",
-            glare: "#CFFAFE",
+            DEFAULT: "#3DB8A5",
+            glare: "#47C2AF",
           },
         },
       },
     },
+    darkVariables: ({ theme }) => ({
+      DEFAULT: {
+        color: {
+          ...theme("variables.DEFAULT.color"),
+          primary: theme("variables.DEFAULT.color.secondary"),
+          secondary: theme("variables.DEFAULT.color.primary"),
+        },
+      },
+    }),
     spacing,
     fontSize,
     fontFamily,
