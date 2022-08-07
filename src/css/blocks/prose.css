@@ -12,12 +12,12 @@
 }
 
 .prose aside {
-  border-inline-start: 10px solid var(--color-primary);
+  border-inline-start: 10px solid var(--color-highlight-primary);
   padding: var(--space-s-m);
 }
 
 .prose blockquote {
-  border-inline-start: 10px solid var(--color-secondary);
+  border-inline-start: 10px solid var(--color-highlight-secondary);
   padding: var(--space-m-l);
   font-family: var(--font-serif);
   font-style: italic;

@@ -27,18 +27,18 @@ module.exports = {
       lg: "80em",
     },
     colors: {
-      dark: "var(--colors-dark)",
+      dark: "var(--color-dark)",
       light: {
-        DEFAULT: "var(--colors-light)",
-        glare: "var(--colors-light-glare)",
+        DEFAULT: "var(--color-light)",
+        glare: "var(--color-light-glare)",
       },
-      primary: {
-        DEFAULT: "var(--colors-primary)",
-        glare: "var(--colors-primary-glare)",
+      "highlight-primary": {
+        DEFAULT: "var(--color-highligh-primary)",
+        glare: "var(--color-highlight-primary-glare)",
       },
-      secondary: {
-        DEFAULT: "var(--colors-secondary)",
-        glare: "var(--colors-light)",
+      "highlight-secondary": {
+        DEFAULT: "var(--color-highlight-secondary)",
+        glare: "var(--color-highlight-secondary-glare)",
       },
     },
     variables: {
@@ -49,11 +49,11 @@ module.exports = {
             DEFAULT: "#F3F3F3",
             glare: "#FFFFFF",
           },
-          primary: {
+          "highlight-primary": {
             DEFAULT: "#EC4899",
             glare: "#FCE7F3",
           },
-          secondary: {
+          "highlight-secondary": {
             DEFAULT: "#06B6D4",
             glare: "#CFFAFE",
           },
@@ -142,6 +142,11 @@ module.exports = {
         }
 
         Object.keys(group).forEach((key) => {
+          console.log({
+            [`.${prefix}-${key}`]: postcssJs.objectify(
+              postcss.parse(`${property}: ${group[key]}`)
+            ),
+          });
           addUtilities({
             [`.${prefix}-${key}`]: postcssJs.objectify(
               postcss.parse(`${property}: ${group[key]}`)
