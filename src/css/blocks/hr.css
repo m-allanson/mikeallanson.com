@@ -1,5 +1,5 @@
 .hr {
   border: 0;
-  border-top: var(--space-xs) dashed var(--color-dark);
+  border-top: var(--space-xs) dashed var(--color-secondary);
   opacity: 80%;
 }

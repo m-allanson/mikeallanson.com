@@ -5,8 +5,8 @@
   project: https://cube.fyi/css.html
 */
 body {
-  color: var(--color-dark);
-  background: var(--color-light);
+  color: var(--color-secondary);
+  background: var(--color-primary);
   font-size: var(--size-step-1);
   font-family: var(--font-base);
   line-height: 1.4;
@@ -95,6 +95,6 @@ main:focus {
 
 /* Base selection styles that invert whatever colours are rendered */
 ::selection {
-  background: var(--color-dark);
-  color: var(--color-light);
+  background: var(--color-secondary);
+  color: var(--color-primary);
 }

@@ -50,10 +50,10 @@
         console.log(e)
           const delta = e.deltaY;
           if (delta < 0 && !isCeiling) {
-              document.documentElement.style.background = 'var(--color-light)';
+              document.documentElement.style.background = 'var(--color-primary)';
               isCeiling = true;
           } else if (delta > 0 && isCeiling) {
-              document.documentElement.style.background = 'var(--color-dark)';
+              document.documentElement.style.background = 'var(--color-secondary)';
               isCeiling = false;
           }
       });

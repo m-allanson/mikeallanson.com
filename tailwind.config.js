@@ -27,11 +27,11 @@ module.exports = {
       lg: "80em",
     },
     colors: {
-      dark: "var(--color-dark)",
-      light: {
-        DEFAULT: "var(--color-light)",
-        glare: "var(--color-light-glare)",
+      primary: {
+        DEFAULT: "var(--color-primary)",
+        glare: "var(--color-primary-glare)",
       },
+      secondary: "var(--color-secondary)",
       "highlight-primary": {
         DEFAULT: "var(--color-highligh-primary)",
         glare: "var(--color-highlight-primary-glare)",
@@ -44,11 +44,11 @@ module.exports = {
     variables: {
       DEFAULT: {
         color: {
-          dark: "#404040",
-          light: {
+          primary: {
             DEFAULT: "#F3F3F3",
             glare: "#FFFFFF",
           },
+          secondary: "#404040",
           "highlight-primary": {
             DEFAULT: "#EC4899",
             glare: "#FCE7F3",
