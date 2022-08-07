@@ -6,26 +6,60 @@ const clampGenerator = require("./design-utils/clamp-generator.js");
 const tokensToTailwind = require("./design-utils/tokens-to-tailwind.js");
 
 // Raw design tokens
-const colorTokens = require("./design-utils/tokens/colors.json");
 const fontTokens = require("./design-utils/tokens/fonts.json");
 const spacingTokens = require("./design-utils/tokens/spacing.json");
 const textSizeTokens = require("./design-utils/tokens/text-sizes.json");
 
 // Process design tokens
-const colors = tokensToTailwind(colorTokens.items);
 const fontFamily = tokensToTailwind(fontTokens.items);
 const fontSize = tokensToTailwind(clampGenerator(textSizeTokens.items));
 const spacing = tokensToTailwind(clampGenerator(spacingTokens.items));
 
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,mdx,njk,twig,vue}"],
+  experimental: {
+    optimizeUniversalDefaults: true,
+  },
   presets: [],
   theme: {
     screens: {
       md: "50em",
       lg: "80em",
     },
-    colors,
+    colors: {
+      dark: "var(--colors-dark)",
+      light: {
+        DEFAULT: "var(--colors-light)",
+        glare: "var(--colors-light-glare)",
+      },
+      primary: {
+        DEFAULT: "var(--colors-primary)",
+        glare: "var(--colors-primary-glare)",
+      },
+      secondary: {
+        DEFAULT: "var(--colors-secondary)",
+        glare: "var(--colors-light)",
+      },
+    },
+    variables: {
+      DEFAULT: {
+        color: {
+          dark: "#404040",
+          light: {
+            DEFAULT: "#F3F3F3",
+            glare: "#FFFFFF",
+          },
+          primary: {
+            DEFAULT: "#EC4899",
+            glare: "#FCE7F3",
+          },
+          secondary: {
+            DEFAULT: "#06B6D4",
+            glare: "#CFFAFE",
+          },
+        },
+      },
+    },
     spacing,
     fontSize,
     fontFamily,
@@ -34,8 +68,6 @@ module.exports = {
       bold: 700,
       black: 800,
     },
-    backgroundColor: ({ theme }) => theme("colors"),
-    textColor: ({ theme }) => theme("colors"),
     margin: ({ theme }) => ({
       auto: "auto",
       ...theme("spacing"),
@@ -73,7 +105,6 @@ module.exports = {
       const currentConfig = config();
 
       const groups = [
-        { key: "colors", prefix: "color" },
         { key: "spacing", prefix: "space" },
         { key: "fontSize", prefix: "size" },
         { key: "fontFamily", prefix: "font" },
@@ -101,7 +132,6 @@ module.exports = {
       const currentConfig = config();
       const customUtilities = [
         { key: "spacing", prefix: "flow-space", property: "--flow-space" },
-        { key: "colors", prefix: "spot-color", property: "--spot-color" },
       ];
 
       customUtilities.forEach(({ key, prefix, property }) => {
@@ -120,5 +150,6 @@ module.exports = {
         });
       });
     }),
+    require("@mertasan/tailwindcss-variables"),
   ],
 };
