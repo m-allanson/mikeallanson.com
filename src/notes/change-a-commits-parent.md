@@ -32,7 +32,7 @@ And a desired layout of:
 ```shell
 o---o---o---o---o  main
         |            \
-        |             o'--o'--o'  topic
+        |             o--o--o  topic
          \
           o---o---o---o---o  next
 ```
