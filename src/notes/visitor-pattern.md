@@ -73,5 +73,5 @@ visitHello says: HELLO world!
 
 ## References
 
-- Chapter [5.3 of Crafting Interpreters](https://craftinginterpreters.com/representing-code.html#working-with-trees) contains a good description
+- [Chapter 5.3 of Crafting Interpreters](https://craftinginterpreters.com/representing-code.html#working-with-trees) contains a good description
 - [Visitor pattern on Wikipedia](https://en.wikipedia.org/wiki/Visitor_pattern)
