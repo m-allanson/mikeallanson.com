@@ -1,0 +1,17 @@
+.site-footer {
+  padding: var(--space-s-m);
+  padding-block: var(--space-m-l);
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  display: flex;
+  gap: var(--space-s-m);
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.site-footer svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+  color: var(--color-primary);
+}
