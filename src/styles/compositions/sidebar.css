@@ -38,6 +38,6 @@ EXCEPTIONS
 /* 
 A flipped version where the sidebar is on the right
 */
-.sidebar[data-direction='rtl'] {
+.sidebar[data-direction="rtl"] {
   flex-direction: row-reverse;
 }

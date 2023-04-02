@@ -3,7 +3,11 @@ import { getCollection } from "astro:content";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 export async function get(context) {
-  const items = await getCollection("notes").map((note) => ({
+  let items = (await getCollection("notes")).sort(
+    (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+  );
+
+  items = items.map((note) => ({
     ...note.data,
     pubDate: note.data.date,
     link: `/notes/${note.slug}/`,

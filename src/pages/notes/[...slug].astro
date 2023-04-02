@@ -1,11 +1,10 @@
 ---
 import type { CollectionEntry } from "astro:content";
+type Props = CollectionEntry<"notes">["data"];
 
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
-
-type Props = CollectionEntry<"notes">["data"];
 
 export async function getStaticPaths() {
   const notes = (await getCollection("notes")).sort(
@@ -32,7 +31,7 @@ const { note, nextLink, prevLink } = Astro.props;
 const { Content } = await note.render();
 ---
 
-<BaseLayout>
+<BaseLayout title={note.data.title}>
   <article class="flow prose">
     <h1>{note.data.title}</h1>
     <FormattedDate date={note.data.date} />

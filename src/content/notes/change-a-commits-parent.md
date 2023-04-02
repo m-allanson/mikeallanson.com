@@ -9,7 +9,7 @@ There are some detailed Stack Overflow answers that dig into different ways to d
 
 Here it is:
 
-```git
+```
 git rebase --onto <new-parent-ref> <old-parent-ref> <target-branch-ref>
 ```
 
@@ -39,7 +39,7 @@ o---o---o---o---o  main
 
 You can use the following command:
 
-```git
+```
 git rebase --onto main next topic
 ```
 

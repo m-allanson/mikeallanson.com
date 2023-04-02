@@ -1,21 +1,25 @@
 ---
+import type { CollectionEntry } from "astro:content";
+type Props = CollectionEntry<"notes">["data"];
+
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 
-const posts = (await getCollection("notes")).sort(
+const notes = (await getCollection("notes")).sort(
+  // reverse order
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 ---
 
-<BaseLayout>
+<BaseLayout title="Home">
   <h1>Notes</h1>
   <ol reversed class="notelist">
     {
-      posts.map((post) => (
+      notes.map((note) => (
         <li>
-          <a href={`/notes/${post.slug}/`}>{post.data.title}</a>
-          <FormattedDate date={post.data.date} />
+          <a href={`/notes/${note.slug}/`}>{note.data.title}</a>
+          <FormattedDate date={note.data.date} />
         </li>
       ))
     }
