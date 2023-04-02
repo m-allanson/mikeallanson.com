@@ -3,3 +3,4 @@
 
 export const SITE_TITLE = "MA";
 export const SITE_DESCRIPTION = "Welcome to my website!";
+export const REPO = "https://www.github.com/m-allanson/mikeallanson.com";
