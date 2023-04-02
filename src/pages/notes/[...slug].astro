@@ -8,21 +8,55 @@ import FormattedDate from "../../components/FormattedDate.astro";
 type Props = CollectionEntry<"notes">["data"];
 
 export async function getStaticPaths() {
-  const posts = await getCollection("notes");
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: post,
-  }));
+  const notes = (await getCollection("notes")).sort(
+    (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+  );
+
+  return notes.map((note, i) => {
+    const nextLink = notes[i + 1] && {
+      href: `/notes/${notes[i + 1].slug}/`,
+      title: notes[i + 1].data.title,
+    };
+    const prevLink = notes[i - 1] && {
+      href: `/notes/${notes[i - 1].slug}/`,
+      title: notes[i - 1].data.title,
+    };
+    return {
+      params: { slug: note.slug },
+      props: { note, nextLink, prevLink },
+    };
+  });
 }
 
-const post = Astro.props;
-const { Content } = await post.render();
+const { note, nextLink, prevLink } = Astro.props;
+const { Content } = await note.render();
 ---
 
 <BaseLayout>
   <article class="flow prose">
-    <h1>{post.data.title}</h1>
-    <FormattedDate date={post.data.date} />
+    <h1>{note.data.title}</h1>
+    <FormattedDate date={note.data.date} />
     <Content />
   </article>
+  {
+    (nextLink || prevLink) && (
+      <>
+        <div class="region" style="--region-space: var(--space-m-l)">
+          <hr class="hr" />
+        </div>
+        <ul role="list" style="margin: 0">
+          {nextLink && (
+            <li>
+              Next: <a href={nextLink.href}>{nextLink.title}</a>
+            </li>
+          )}
+          {prevLink && (
+            <li>
+              Previous: <a href={prevLink.href}>{prevLink.title}</a>
+            </li>
+          )}
+        </ul>
+      </>
+    )
+  }
 </BaseLayout>
