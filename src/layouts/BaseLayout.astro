@@ -20,10 +20,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       </main>
       <Footer />
     </div>
-    <script type="module">
+    <script>
       let isCeiling = true;
       window.addEventListener("wheel", (e) => {
-        console.log(e);
         const delta = e.deltaY;
         if (delta < 0 && !isCeiling) {
           document.documentElement.style.background = "var(--color-primary)";

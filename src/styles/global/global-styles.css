@@ -70,6 +70,12 @@ svg {
   padding: 0;
 }
 
+/* A bit of space for code blocks */
+pre:has(code) {
+  padding-block: var(--space-s);
+  padding-inline: var(--space-m);
+}
+
 /* Base interactive elements */
 
 a {

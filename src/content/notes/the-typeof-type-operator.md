@@ -5,7 +5,7 @@ tags:
   - typescript
 ---
 
-this is part 2 of my notes from working through the [_Beginner 1_ exercise from TypeScript's _Type | Treat 2021_](https://www.typescriptlang.org/play?#gist/927ccc66ae3022dc64c4f650109b937a-1). [Part 1 can be found here](/literal-types-and-as-const)
+this is part 2 of my notes from working through the [_Beginner 1_ exercise from TypeScript's _Type | Treat 2021_](https://www.typescriptlang.org/play?#gist/927ccc66ae3022dc64c4f650109b937a-1). [Part 1 can be found here](/notes/literal-types-and-as-const)
 
 ## `typeof`
 

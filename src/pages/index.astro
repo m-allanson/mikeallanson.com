@@ -9,16 +9,15 @@ const posts = (await getCollection("notes")).sort(
 ---
 
 <BaseLayout>
-  <section>
-    <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <FormattedDate date={post.data.date} />
-            <a href={`/notes/${post.slug}/`}>{post.data.title}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+  <h1>Notes</h1>
+  <ol reversed class="notelist">
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/notes/${post.slug}/`}>{post.data.title}</a>
+          <FormattedDate date={post.data.date} />
+        </li>
+      ))
+    }
+  </ol>
 </BaseLayout>

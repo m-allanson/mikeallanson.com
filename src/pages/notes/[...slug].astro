@@ -1,6 +1,11 @@
 ---
+import type { CollectionEntry } from "astro:content";
+
 import { getCollection } from "astro:content";
-import NotesPost from "../../layouts/NotesPost.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+
+type Props = CollectionEntry<"notes">["data"];
 
 export async function getStaticPaths() {
   const posts = await getCollection("notes");
@@ -14,6 +19,10 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<NotesPost {...post.data}>
-  <Content />
-</NotesPost>
+<BaseLayout>
+  <article class="flow prose">
+    <h1>{post.data.title}</h1>
+    <FormattedDate date={post.data.date} />
+    <Content />
+  </article>
+</BaseLayout>
