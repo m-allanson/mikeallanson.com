@@ -23,6 +23,7 @@ Rough todo notes. I might or might not do any of these.
 - Check sitemap?
 - A11y review
 - Add CSP?
+- Add heading anchors back in
 - ~~Dark mode~~
 - ~~Fiddle with fonts~~ Enough for now. Not sure if I've made it better or worse.
 - ~~Notes not posts~~
