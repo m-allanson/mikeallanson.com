@@ -1,22 +1,23 @@
 /** @type {import('tailwindcss').Config} */
-const plugin = require("tailwindcss/plugin");
-const postcss = require("postcss");
-const postcssJs = require("postcss-js");
+import plugin from "tailwindcss/plugin.js";
+import postcss from "postcss";
+import postcssJs from "postcss-js";
+import tailwindcssVariables from "@mertasan/tailwindcss-variables";
 
-const clampGenerator = require("./src/design-utils/clamp-generator.cjs");
-const tokensToTailwind = require("./src/design-utils/tokens-to-tailwind.cjs");
+import { clampGenerator } from "./src/design-utils/clamp-generator.js";
+import { tokensToTailwind } from "./src/design-utils/tokens-to-tailwind.js";
 
 // Raw design tokens
-const fontTokens = require("./src/design-utils/tokens/fonts.json");
-const spacingTokens = require("./src/design-utils/tokens/spacing.json");
-const textSizeTokens = require("./src/design-utils/tokens/text-sizes.json");
+import fontTokens from "./src/design-utils/tokens/fonts.json" assert { type: "json" };
+import spacingTokens from "./src/design-utils/tokens/spacing.json" assert { type: "json" };
+import textSizeTokens from "./src/design-utils/tokens/text-sizes.json" assert { type: "json" };
 
 // Process design tokens
 const fontFamily = tokensToTailwind(fontTokens.items);
 const fontSize = tokensToTailwind(clampGenerator(textSizeTokens.items));
 const spacing = tokensToTailwind(clampGenerator(spacingTokens.items));
 
-module.exports = {
+export default {
   content: ["./src/**/*.{astro,html,js,md,ts,tsx}"],
   experimental: {
     // This skips outputting some things that we don't need
@@ -171,6 +172,6 @@ module.exports = {
         });
       });
     }),
-    require("@mertasan/tailwindcss-variables"),
+    tailwindcssVariables,
   ],
 };

@@ -1,4 +1,4 @@
-const slugger = require("github-slugger");
+import { slug } from "github-slugger";
 
 /**
  * Converts human readable tokens into tailwind config friendly ones
@@ -6,8 +6,8 @@ const slugger = require("github-slugger");
  * @param {array} tokens {name: string, value: any}
  * @return {object} {key, value}
  */
-const tokensToTailwind = (tokens) => {
-  const nameSlug = (text) => slugger.slug(text);
+export const tokensToTailwind = (tokens) => {
+  const nameSlug = (text) => slug(text);
 
   let response = {};
 
@@ -17,5 +17,3 @@ const tokensToTailwind = (tokens) => {
 
   return response;
 };
-
-module.exports = tokensToTailwind;

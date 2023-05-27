@@ -1,4 +1,4 @@
-const viewports = require("./tokens/viewports.json");
+import viewports from "./tokens/viewports.json" assert { type: "json" };
 
 /**
  * Takes an array of tokens and sends back and array of name
@@ -7,7 +7,7 @@ const viewports = require("./tokens/viewports.json");
  * @param {array} tokens array of {name: string, min: number, max: number}
  * @returns {array} {name: string, value: string}
  */
-const clampGenerator = (tokens) => {
+export const clampGenerator = (tokens) => {
   const rootSize = 16;
 
   return tokens.map(({ name, min, max }) => {
@@ -35,5 +35,3 @@ const clampGenerator = (tokens) => {
     };
   });
 };
-
-module.exports = clampGenerator;
