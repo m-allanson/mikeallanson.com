@@ -3,8 +3,6 @@ title: A Rendering Bug in Safari
 date: 2021-02-18
 ---
 
-# A Rendering Bug in Safari
-
 I found a mysterious Safari rendering issue while working on this site.
 
 At first I thought I must have written some wonky CSS, so I attempted to create a [minimal reproduction on CodeSandbox](https://kh4qf.csb.app).
