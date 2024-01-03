@@ -4,7 +4,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 export async function get(context) {
   let items = (await getCollection("notes")).sort(
-    (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+    (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
   );
 
   items = items.map((note) => ({

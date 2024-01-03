@@ -3,7 +3,9 @@
   font-family: "IBM Plex Sans";
   font-style: italic;
   font-weight: 500;
-  src: local("IBM Plex Sans Medm Italic"), local("IBMPlexSans-MedmItalic"),
+  src:
+    local("IBM Plex Sans Medm Italic"),
+    local("IBMPlexSans-MedmItalic"),
     url("/fonts/IBMPlexSans-MediumItalic-Latin1.woff2") format("woff2");
   unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153,
     U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022,

@@ -166,7 +166,7 @@ export default {
           // });
           addUtilities({
             [`.${prefix}-${key}`]: postcssJs.objectify(
-              postcss.parse(`${property}: ${group[key]}`)
+              postcss.parse(`${property}: ${group[key]}`),
             ),
           });
         });
