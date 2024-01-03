@@ -1,12 +1,11 @@
 ---
-import type { CollectionEntry } from "astro:content";
-type Props = CollectionEntry<"notes">["data"];
+import { type InferGetStaticPropsType, type GetStaticPaths } from 'astro';
 
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async function () {
   const notes = (await getCollection("notes")).sort(
     (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
   );
@@ -25,10 +24,13 @@ export async function getStaticPaths() {
       props: { note, nextLink, prevLink },
     };
   });
-}
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { note, nextLink, prevLink } = Astro.props;
 const { Content } = await note.render();
+
 ---
 
 <BaseLayout title={note.data.title}>
