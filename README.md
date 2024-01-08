@@ -12,7 +12,7 @@ Earlier versions were built with Eleventy ([v2 branch](https://github.com/m-alla
 
 Forked from: https://github.com/withastro/astro/tree/latest/examples/blog
 
-Architecture from: https://glitch.com/edit/#!/build-excellent-websites project. See https://buildexcellentwebsit.es/ for more info on the principals behind it. Or watch the talk: https://heypresents.com/talks/be-the-browser-s-mentor-not-its-micromanager
+Architecture from: https://glitch.com/edit/#!/build-excellent-websites project. Minus the Tailwind part, as I wasn't making much use of it. See https://buildexcellentwebsit.es/ for more info on the principals behind it. Or watch the talk: https://heypresents.com/talks/be-the-browser-s-mentor-not-its-micromanager
 
 ## Todo
 
