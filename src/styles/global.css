@@ -1,3 +1,267 @@
-@import "global/reset.css";
-@import "global/global-styles.css";
-@import "global/utilities.css";
+/* Global variables */
+:root {
+  --gutter: var(--space-s-m);
+  --border-radius: var(--step-1);
+  --transition-base: 250ms ease;
+  --transition-movement: 200ms linear;
+  --transition-fade: 200ms ease;
+  --transition-bounce: 500ms cubic-bezier(0.5, 0.05, 0.2, 1.5);
+  --tracking: -0.05ch;
+  --tracking-s: -0.075ch;
+
+  /* Fonts */
+  --font-base: IBM Plex Sans, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica Neue, Arial, sans-serif;
+  --font-serif: ui-serif, Georgia, serif;
+
+  /* Colours */
+  --color-primary: #f3f3f3;
+  --color-primary-glare: #ffffff;
+  --color-secondary: #404040;
+  --color-secondary-glare: #525252;
+  --color-highlight-primary: #ff707e;
+  --color-highlight-primary-glare: #ff8591;
+  --color-highlight-secondary: #3db8a5;
+  --color-highlight-secondary-glare: #47c2af;
+
+  @media (prefers-color-scheme: dark) {
+    --color-primary: #404040;
+    --color-primary-glare: #525252;
+    --color-secondary: #f3f3f3;
+    --color-secondary-glare: #ffffff;
+    --color-highlight-primary: #ff707e;
+    --color-highlight-primary-glare: #ff8591;
+    --color-highlight-secondary: #3db8a5;
+    --color-highlight-secondary-glare: #47c2af;
+  }
+
+  /* Type scale */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.125,1350,20,1.25,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --step--1: clamp(0.8888rem, 0.8542rem + 0.1728vw, 1rem);
+  --step-0: clamp(1rem, 0.9223rem + 0.3883vw, 1.25rem);
+  --step-1: clamp(1.125rem, 0.9891rem + 0.6796vw, 1.5625rem);
+  --step-2: clamp(1.2656rem, 1.052rem + 1.068vw, 1.9531rem);
+  --step-3: clamp(1.4238rem, 1.1076rem + 1.5806vw, 2.4413rem);
+  --step-4: clamp(1.6019rem, 1.1514rem + 2.2524vw, 3.0519rem);
+  --step-5: clamp(1.8019rem, 1.1764rem + 3.1272vw, 3.815rem);
+  --step-6: clamp(2.0275rem, 1.176rem + 4.2573vw, 4.7681rem);
+  --step-7: clamp(2.2806rem, 1.1373rem + 5.7165vw, 5.9606rem);
+  --step-8: clamp(2.5656rem, 1.048rem + 7.5883vw, 7.4506rem);
+
+  /* Space scale */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.125,1350,20,1.25,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l|l-2xl&g=s,l,xl,12 */
+  --space-3xs: clamp(0.25rem, 0.2306rem + 0.0971vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4612rem + 0.1942vw, 0.625rem);
+  --space-xs: clamp(0.75rem, 0.6917rem + 0.2913vw, 0.9375rem);
+  --space-s: clamp(1rem, 0.9223rem + 0.3883vw, 1.25rem);
+  --space-m: clamp(1.5rem, 1.3835rem + 0.5825vw, 1.875rem);
+  --space-l: clamp(2rem, 1.8447rem + 0.7767vw, 2.5rem);
+  --space-xl: clamp(3rem, 2.767rem + 1.165vw, 3.75rem);
+  --space-2xl: clamp(4rem, 3.6893rem + 1.5534vw, 5rem);
+  --space-3xl: clamp(6rem, 5.534rem + 2.3301vw, 7.5rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.1335rem + 0.5825vw, 0.625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.3641rem + 0.6796vw, 0.9375rem);
+  --space-xs-s: clamp(0.75rem, 0.5947rem + 0.7767vw, 1.25rem);
+  --space-s-m: clamp(1rem, 0.7282rem + 1.3592vw, 1.875rem);
+  --space-m-l: clamp(1.5rem, 1.1893rem + 1.5534vw, 2.5rem);
+  --space-l-xl: clamp(2rem, 1.4563rem + 2.7184vw, 3.75rem);
+  --space-xl-2xl: clamp(3rem, 2.3786rem + 3.1068vw, 5rem);
+  --space-2xl-3xl: clamp(4rem, 2.9126rem + 5.4369vw, 7.5rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(1rem, 0.534rem + 2.3301vw, 2.5rem);
+  --space-l-2xl: clamp(2rem, 1.068rem + 4.6602vw, 5rem);
+}
+
+/* Subset: Latin1 */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local("IBM Plex Sans Bold"),
+    local("IBMPlexSans-Bold"),
+    url("/fonts/IBMPlexSans-Bold-Latin1.woff2") format("woff2");
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153,
+    U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022,
+    U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2212, U+FB01-FB02;
+}
+
+/* Subset: Latin1 */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: 700;
+  src:
+    local("IBM Plex Sans Bold Italic"),
+    local("IBMPlexSans-BoldItalic"),
+    url("/fonts/IBMPlexSans-BoldItalic-Latin1.woff2") format("woff2");
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153,
+    U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022,
+    U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2212, U+FB01-FB02;
+}
+
+/* Subset: Latin1 */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: 400;
+  src:
+    local("IBM Plex Sans Italic"),
+    local("IBMPlexSans-Italic"),
+    url("/fonts/IBMPlexSans-Italic-Latin1.woff2") format("woff2");
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153,
+    U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022,
+    U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2212, U+FB01-FB02;
+}
+
+/* Subset: Latin1 */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  src:
+    local("IBM Plex Sans Medm"),
+    local("IBMPlexSans-Medm"),
+    url("/fonts/IBMPlexSans-Medium-Latin1.woff2") format("woff2");
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153,
+    U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022,
+    U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2212, U+FB01-FB02;
+}
+
+/* Subset: Latin1 */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: 500;
+  src:
+    local("IBM Plex Sans Medm Italic"),
+    local("IBMPlexSans-MedmItalic"),
+    url("/fonts/IBMPlexSans-MediumItalic-Latin1.woff2") format("woff2");
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153,
+    U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022,
+    U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2212, U+FB01-FB02;
+}
+
+/* Subset: Latin1 */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local("IBM Plex Sans"),
+    local("IBMPlexSans"),
+    url("/fonts/IBMPlexSans-Regular-Latin1.woff2") format("woff2");
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153,
+    U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022,
+    U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2212, U+FB01-FB02;
+}
+
+/*
+  Global styles
+
+  Low-specificity, global styles that apply to the whole
+  project: https://cube.fyi/css.html
+*/
+body {
+  color: var(--color-secondary);
+  background: var(--color-primary);
+  font-size: var(--step-1);
+  font-family: var(--font-base);
+  line-height: 1.4;
+  letter-spacing: var(--tracking);
+}
+
+/* Base typesetting */
+h1,
+h2,
+h3 {
+  line-height: 1;
+  letter-spacing: var(--tracking-s);
+}
+
+h1 {
+  font-size: var(--step-5);
+}
+
+h2 {
+  font-size: var(--step-4);
+}
+
+h3 {
+  font-size: var(--step-3);
+}
+
+/* Set line lengths */
+p,
+li,
+blockquote:not([class]) {
+  max-width: 60ch;
+}
+
+h1,
+h2,
+h3 {
+  max-width: 30ch;
+}
+
+/* More generic elements */
+blockquote:not([class]) {
+  font-family: var(--font-serif);
+  font-size: var(--step-2);
+}
+
+/* Markdown blockquote:not([class])s aren't ideal, so we're presuming the person quoted is the last p */
+/* If the last-of-type is also the first-child, */
+blockquote:not([class]) p:last-of-type:not(:first-child) {
+  font-family: var(--font-base);
+  font-size: var(--step-1);
+  font-weight: normal;
+}
+
+svg {
+  height: 2ex;
+  width: auto;
+  flex: none;
+}
+
+[role="list"] {
+  padding: 0;
+}
+
+/* A bit of space for code blocks */
+pre:has(code) {
+  padding-block: var(--space-s);
+  padding-inline: var(--space-m);
+}
+
+/* Base interactive elements */
+
+a {
+  color: currentcolor;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus {
+  outline: 2px solid;
+  outline-offset: 0.3ch;
+}
+
+:target {
+  scroll-margin-top: 2ex;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* Base selection styles that invert whatever colours are rendered */
+::selection {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+}
