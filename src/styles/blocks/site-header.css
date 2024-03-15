@@ -1,10 +1,26 @@
 .site-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-inline-end: var(--space-xs);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-block-start: var(--space-2xs);
 }
 
 .site-header ul {
   margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.site-header li a {
+  display: block;
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 }

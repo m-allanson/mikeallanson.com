@@ -1,4 +1,14 @@
 /* This is a very grand name for a very "that'll do" approach */
 .logo {
-  letter-spacing: -0.2ch;
+  text-transform: uppercase;
+  font-size: var(--step-1);
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
 }

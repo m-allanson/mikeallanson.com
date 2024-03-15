@@ -18,6 +18,9 @@ Architecture from: https://glitch.com/edit/#!/build-excellent-websites project. 
 
 Rough todo notes. I might or might not do any of these.
 
+- aria label for links (header)
+- a11y check
+- highlight colour + fancy hover
 - Check internal links. There's a couple at least that are broken
 - Check RSS / reader view
 - Check sitemap?
