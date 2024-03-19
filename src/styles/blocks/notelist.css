@@ -1,0 +1,13 @@
+.note-list {
+  line-height: 1.6;
+  padding-inline: 1.6rem;
+}
+
+.note-list li::marker {
+  color: var(--color-secondary-glare);
+  font-size: var(--step--1);
+}
+
+.note-list time {
+  font-size: var(--step--1);
+}

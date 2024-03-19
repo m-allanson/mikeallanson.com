@@ -24,7 +24,9 @@ Info about this implementation: https://piccalil.li/quick-tip/flow-utility/
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip: rect(1px, 1px, 1px, 1px);
+  /*clip-path for newer browsers*/
+  clip-path: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
   border-width: 0;
 }

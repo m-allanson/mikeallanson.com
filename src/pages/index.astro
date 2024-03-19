@@ -14,7 +14,7 @@ const notes = (await getCollection("notes")).sort(
 
 <BaseLayout title="Home">
   <h1>Notes</h1>
-  <ol reversed class="notelist">
+  <ol reversed class="note-list">
     {
       notes.map((note) => (
         <li>

@@ -6,6 +6,10 @@
   margin-block-start: var(--space-2xs);
 }
 
+.site-header.wrapper {
+  --wrapper-max-width: 100%;
+}
+
 .site-header ul {
   margin: 0;
   padding: 0;

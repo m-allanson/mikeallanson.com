@@ -17,8 +17,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   </head>
   <body>
     <div class="sticky-footer">
+      <a href="#main" class="sr-only">Skip to main content</a>
       <Header />
-      <main class="region wrapper">
+      <main class="region wrapper" id="main">
         <slot />
       </main>
       <Footer />
